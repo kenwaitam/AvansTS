@@ -1,18 +1,12 @@
-﻿using System;
+﻿using AvansTS.Core.Models.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AvansTS.Core.Models
 {
-    public class ProductBacklogItem
+    public class ProductBacklogItem : WorkItem
     {
-		public String Title { get; set; }
-		public Developer Developer { get; set; }
-
-		public List<Comment> Comments { get; set; }
 		public List<Task> Tasks { get; set; }
-
-		public Boolean IsDone { get; set; }
-
 	}
 }
