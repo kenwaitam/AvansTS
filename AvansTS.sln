@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvansTS.Core", "AvansTS\AvansTS.Core.csproj", "{1483D833-9121-4429-B043-680619FCB94C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvansTS.Core", "AvansTS.Core\AvansTS.Core.csproj", "{1483D833-9121-4429-B043-680619FCB94C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvansTS.Core.Tests", "AvansTS.Core.Tests\AvansTS.Core.Tests.csproj", "{38EEAC1F-F609-46C8-AB1B-562129D85E83}"
 EndProject
