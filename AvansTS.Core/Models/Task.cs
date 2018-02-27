@@ -31,7 +31,21 @@ namespace AvansTS.Core.Models
         public void AddDeveloper(Developer usr)
         {
             Developer = usr;
+        }
+
+        public void InProgress()
+        {
             TaskState.InProgress();
+        }
+
+        public void IsDone()
+        {
+            TaskState.IsDone();
+        }
+
+        public void IsWrong()
+        {
+            TaskState.IsWrong();
         }
     }
 }

@@ -6,11 +6,6 @@ namespace AvansTS.Core.States.Task
 {
     public abstract class TaskStateBase
     {
-        public virtual void InToDo()
-        {
-            throw new InvalidOperationException();
-        }
-
         public virtual void InProgress()
         {
             throw new InvalidOperationException();
