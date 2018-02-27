@@ -1,4 +1,5 @@
 ﻿using AvansTS.Core.Models.Base;
+using AvansTS.Core.Observers;
 using AvansTS.Core.States.Task;
 using AvansTS.Core.States.Task.Implementations;
 using System;
@@ -7,9 +8,14 @@ using System.Text;
 
 namespace AvansTS.Core.Models
 {
-    public class Task : WorkItem
+    public class Task : SubjectBase
     {
         public ProductBacklogItem Item { get; set; }
+
+        public String Title { get; set; }
+        public Developer Developer { get; set; }
+        public SprintBacklog Sprint { get; set; }
+        public List<Comment> Comments { get; set; }
 
         public TaskStateBase TaskState { get; set; }
         public TaskStateBase ToDo { get; set; }
@@ -26,12 +32,28 @@ namespace AvansTS.Core.Models
             Sprint = item.Sprint;
 
             TaskState = ToDo;
+
+            Attach(Item);
         }
 
         public void AddDeveloper(Developer usr)
         {
             Developer = usr;
+        }
+
+        public void InToDo()
+        {
+            TaskState.InTodo();
+        }
+
+        public void InProgress()
+        {
             TaskState.InProgress();
+        }
+
+        public void IsDone()
+        {
+            TaskState.IsDone();
         }
     }
 }

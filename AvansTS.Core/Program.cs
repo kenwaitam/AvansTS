@@ -54,9 +54,17 @@ namespace AvansTS.Core
             // to Tasks
             prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].AddDeveloper(usr2);
 
+            // Add Tasks to ToDo, Doing, Done
+            prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].InProgress();
+            prj.ProductBacklog.Sprints[0].Items[0].Tasks[1].InProgress();
+
+            prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].IsDone();
+            prj.ProductBacklog.Sprints[0].Items[0].Tasks[1].IsDone();
+
+            prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].InToDo();
 
             // [DEBUGGING: ZONE]
-            Debug.WriteLine(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState);
+            Debug.WriteLine(prj.ProductBacklog.Sprints[0].Items[0].IsDone);
         }
     }
 }
