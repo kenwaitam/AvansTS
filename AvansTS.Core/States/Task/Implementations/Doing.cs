@@ -8,7 +8,9 @@ namespace AvansTS.Core.States.Task.Implementations
     {
         public Models.Task Task { get; set; }
 
-        public Doing(Models.Task task)
+		public override string State { get { return "Doing"; } }
+
+		public Doing(Models.Task task)
         {
             Task = task;
         }
