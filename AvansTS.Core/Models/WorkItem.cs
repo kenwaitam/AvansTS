@@ -8,7 +8,8 @@ namespace AvansTS.Core.Models.Base
     {
 		public String Title { get; set; }
 		public Developer Developer { get; set; }
-		public List<Comment> Comments { get; set; }
-		public bool IsDone { get; set; }
-	}
+        public Boolean IsDone { get; set; }
+        public SprintBacklog Sprint { get; set; }
+        public List<Comment> Comments { get; set; }
+    }
 }

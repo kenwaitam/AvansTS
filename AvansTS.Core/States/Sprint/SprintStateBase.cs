@@ -6,5 +6,8 @@ namespace AvansTS.Core.States.SprintBlacklog
 {
     public abstract class SprintStateBase
     {
+        public void InProgress() { }
+        public void IsDone() { }
+        public void IsWrong() { }
     }
 }

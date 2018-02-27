@@ -7,18 +7,24 @@ namespace AvansTS.Core.Models
 {
     public class SprintBacklog
     {
-		public String Title { get; set; }
+		public String Name { get; set; }
 		public DateTime StartDate { get; set; }
-		public DateTime EndtDate { get; set; }
-		public ProductBacklog ProductBacklog { get; set; }
-		public bool IsStarting { get; set; }
-		public Developer Scrummaster { get; set; }
+		public DateTime EndDate { get; set; }
+        public Developer Scrummaster { get; set; }
+        public List<ProductBacklogItem> Items { get; set; }
 
-		public SprintStateBase State { get; set; }
+		public Boolean IsCurrent { get; set; }
+        public SprintStateBase State { get; set; }
 
-		public void StartSprint()
-		{
-			IsStarting = true;
-		}
+        public void StartSprint()
+        {
+            IsCurrent = true;
+        }
+
+        public void AddItem(ProductBacklogItem item)
+        {
+            Items.Add(item);
+            item.Sprint = this;
+        }
 	}
 }
