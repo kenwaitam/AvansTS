@@ -8,7 +8,7 @@ namespace AvansTS.Core.Tests
 {
 	//Testing the Task State Transitions
 	public class TaskStateTest
-    {
+	{
 		// Create New Developers
 		Developer usr1 = new Developer { Name = "Ritchie" };
 		Developer usr2 = new Developer { Name = "Danny" };
@@ -78,8 +78,8 @@ namespace AvansTS.Core.Tests
 
 		//Test Todo to Doing state
 		[Fact]
-        public void ToDo_To_Doing()
-        {
+		public void ToDo_To_Doing()
+		{
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress();
 			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
 			Assert.Equal("Doing", state);
