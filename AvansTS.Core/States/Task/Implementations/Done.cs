@@ -13,9 +13,10 @@ namespace AvansTS.Core.States.Task.Implementations
             Task = task;
         }
 
-        public override void IsWrong()
+        public override void InTodo()
         {
             Task.TaskState = Task.ToDo;
+            Task.Notify();
         }
     }
 }
