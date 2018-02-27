@@ -6,7 +6,7 @@ namespace AvansTS.Core.Models
 {
     public class Project
     {
-		public String Title { get; set; }
+		public String Name { get; set; }
 		public ProductBacklog ProductBacklog { get; set; }
     }
 }
