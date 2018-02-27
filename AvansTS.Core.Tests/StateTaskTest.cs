@@ -71,7 +71,7 @@ namespace AvansTS.Core.Tests
 			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
 			Assert.Equal("ToDo", state);
 			Assert.Throws<InvalidOperationException>(() =>
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.IsWrong());
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InTodo());
 			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
 			Assert.Equal("ToDo", state);
 		}
@@ -105,7 +105,7 @@ namespace AvansTS.Core.Tests
 			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
 			Assert.Equal("Doing", state);
 			Assert.Throws<InvalidOperationException>(() =>
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.IsWrong());
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InTodo());
 			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
 			Assert.Equal("Doing", state);
 		}
@@ -141,7 +141,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.IsDone();
 			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
 			Assert.Equal("Done", state);
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.IsWrong();
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InTodo();
 			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
 			Assert.Equal("ToDo", state);
 
