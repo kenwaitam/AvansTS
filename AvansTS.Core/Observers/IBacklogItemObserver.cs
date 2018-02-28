@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AvansTS.Core.Observers
 {
-    public interface IObserver
+    public interface IBacklogItemObserver
     {
         void Update();
     }

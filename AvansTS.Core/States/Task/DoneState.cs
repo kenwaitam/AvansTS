@@ -18,7 +18,8 @@ namespace AvansTS.Core.States.Task.Implementations
         public override void InTodo()
         {
             Task.TaskState = Task.ToDoState;
-            Task.Notify();
+            Task.NotifyBacklogItem();
+            Task.NotifyScrummaster(Task.Sprint.Scrummaster);
         }
     }
 }
