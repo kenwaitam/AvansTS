@@ -17,7 +17,7 @@ namespace AvansTS.Core.States.Task.Implementations
 
         public override void InTodo()
         {
-            Task.TaskState = Task.ToDo;
+            Task.TaskState = Task.ToDoState;
             Task.Notify();
         }
     }

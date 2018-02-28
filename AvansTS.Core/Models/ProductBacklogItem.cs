@@ -9,13 +9,9 @@ using System.Text;
 
 namespace AvansTS.Core.Models
 {
-    public class ProductBacklogItem : IObserver
+    public class ProductBacklogItem : WorkItemBase, IObserver
     {
-        public String Title { get; set; }
-        public Developer Developer { get; set; }
         public Boolean IsDone { get; set; }
-        public SprintBacklog Sprint { get; set; }
-        public List<Comment> Comments { get; set; }
         public List<Task> Tasks { get; set; }
 
         public void AddTask(Task task)
@@ -23,15 +19,9 @@ namespace AvansTS.Core.Models
             Tasks.Add(task);
         }
 
-        public void AddDeveloper(Developer usr)
-        {
-            Developer = usr;
-
-        }
-
         public void Update()
         {
-            if (Tasks.All(t => t.TaskState == t.Done))
+            if (Tasks.All(t => t.TaskState == t.DoneState))
             {
                 IsDone = true;
             }

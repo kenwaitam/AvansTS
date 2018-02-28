@@ -7,7 +7,7 @@ using Xunit;
 namespace AvansTS.Core.Tests
 {
 	//Testing the Task State Transitions
-	public class TaskStateTest
+	public class TestTaskState
 	{
 		// Create New Developers
 		Developer usr1 = new Developer { Name = "Ritchie" };
@@ -26,7 +26,7 @@ namespace AvansTS.Core.Tests
 		};
 
 		//Constructor that run before each test
-		public TaskStateTest()
+		public TestTaskState()
 		{
 			// Create New Sprints
 			prj.ProductBacklog.AddSprint(new SprintBacklog
@@ -51,9 +51,9 @@ namespace AvansTS.Core.Tests
 
 			// Add Developers
 			// to Backlog Items
-			prj.ProductBacklog.Sprints[0].Items[0].AddDeveloper(usr1);
+			prj.ProductBacklog.Sprints[0].Items[0].AssignDeveloper(usr1);
 			// to Tasks
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].AddDeveloper(usr2);
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].AssignDeveloper(usr2);
 		}
 
 		//Test the first state
