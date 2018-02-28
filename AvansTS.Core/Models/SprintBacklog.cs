@@ -1,30 +1,61 @@
-﻿using AvansTS.Core.States.SprintBlacklog;
+﻿using AvansTS.Core.Models.Base;
+using AvansTS.Core.States.Sprint;
+using AvansTS.Core.States.Sprint.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AvansTS.Core.Models
 {
-    public class SprintBacklog
+    public class SprintBacklog : BacklogBase
     {
-		public String Name { get; set; }
 		public DateTime StartDate { get; set; }
 		public DateTime EndDate { get; set; }
         public Developer Scrummaster { get; set; }
-        public List<ProductBacklogItem> Items { get; set; }
+        public Boolean IsCurrent { get; set; }
 
-		public Boolean IsCurrent { get; set; }
-        public SprintStateBase State { get; set; }
+        public SprintStateBase SprintState { get; set; }
+        public SprintStateBase CreatedState { get; set; }
+        public SprintStateBase StartedState { get; set; }
+        public SprintStateBase FinishedState { get; set; }
 
-        public void StartSprint()
+        public SprintBacklog()
         {
-            IsCurrent = true;
+            CreatedState = new Created(this);
+            StartedState = new Started(this);
+            FinishedState = new FinishedState(this);
+
+            SprintState = CreatedState;
         }
 
-        public void AddItem(ProductBacklogItem item)
+        public void AssignScrummaster(Developer user)
         {
-            Items.Add(item);
-            item.Sprint = this;
+            Scrummaster = user;
         }
-	}
+
+        public virtual void UpdateName(String name)
+        {
+            SprintState.UpdateName(name);
+        }
+
+        public virtual void UpdateDate(DateTime startDate, DateTime endDate)
+        {
+            SprintState.UpdateDate(startDate, endDate);
+        }
+
+        public virtual void AddItem(ProductBacklogItem item)
+        {
+            SprintState.AddItem(item);
+        }
+
+        public virtual void StartSprint()
+        {
+            SprintState.StartSprint();
+        }
+
+        public virtual void EndSprint()
+        {
+            SprintState.EndSprint();
+        }
+    }
 }

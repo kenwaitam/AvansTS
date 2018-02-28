@@ -1,14 +1,13 @@
-﻿using System;
+﻿using AvansTS.Core.Models.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AvansTS.Core.Models
 {
-    public class ProductBacklog
+    public class ProductBacklog : BacklogBase
     {
-        public String Name { get; set; }
         public List<SprintBacklog> Sprints { get; set; }
-		public List<ProductBacklogItem> Items { get; set; }
 
         public void AddSprint(SprintBacklog sprint)
         {
