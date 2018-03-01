@@ -22,8 +22,8 @@ namespace AvansTS.Core
             usr1.AddOption(2);
             usr2.AddOption(1);
 
-            // Create New Projects
-            Project prj = new Project
+			// Create New Projects
+			Project prj = new Project
             {
                 Name = "AvansTS",
                 ProductBacklog = new ProductBacklog

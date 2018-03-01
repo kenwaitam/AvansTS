@@ -7,7 +7,9 @@ namespace AvansTS.Core.States.Sprint
 {
     public abstract class SprintStateBase
     {
-        public virtual void UpdateName(String name)
+		public abstract string State { get; }
+
+		public virtual void UpdateName(String name)
         {
             throw new InvalidOperationException();
         }

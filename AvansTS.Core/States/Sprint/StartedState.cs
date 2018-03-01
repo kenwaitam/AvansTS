@@ -9,14 +9,16 @@ namespace AvansTS.Core.States.Sprint.Implementations
     {
         public SprintBacklog Sprint { get; set; }
 
-        public Started(SprintBacklog sprint)
+		public override string State { get { return "Started"; } }
+
+		public Started(SprintBacklog sprint)
         {
             Sprint = sprint;
         }
 
         public override void EndSprint()
         {
-            if (Sprint.EndDate == DateTime.Now)
+            if (Sprint.EndDate <= DateTime.Now)
             {
                 Sprint.SprintState = Sprint.FinishedState;
                 Sprint.IsCurrent = false;

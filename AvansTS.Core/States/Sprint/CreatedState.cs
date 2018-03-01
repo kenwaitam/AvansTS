@@ -9,7 +9,9 @@ namespace AvansTS.Core.States.Sprint.Implementations
     {
         public SprintBacklog Sprint { get; set; }
 
-        public Created(SprintBacklog sprint)
+		public override string State { get { return "Created"; } }
+
+		public Created(SprintBacklog sprint)
         {
             Sprint = sprint;
         }
