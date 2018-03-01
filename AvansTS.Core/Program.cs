@@ -1,4 +1,5 @@
 ﻿using AvansTS.Core.Models;
+using AvansTS.Core.Singletons;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,8 +14,13 @@ namespace AvansTS.Core
             // SOURCE (UML Guidance):   https://stackoverflow.com/questions/12604031/c-sharp-code-for-association-aggregation-composition
 
             // Create New Accounts
-            Developer usr1 = new Developer { Name = "Ritchie" };
-            Developer usr2 = new Developer { Name = "Danny" };
+            Developer usr1 = new Developer { Name = "Ritchie", Email = "rebos1@avans.nl", NotificationOptions = new List<int>() };
+            Developer usr2 = new Developer { Name = "Danny", Email = "kwdtam@avans.nl", NotificationOptions = new List<int>() };
+
+            // Choose Notification Options
+            usr1.AddOption(1);
+            usr1.AddOption(2);
+            usr2.AddOption(1);
 
             // Create New Projects
             Project prj = new Project
@@ -56,7 +62,7 @@ namespace AvansTS.Core
 
             // Add Developers or Scrummasters
             // to Sprint Backlog
-            prj.ProductBacklog.Sprints[0].AssignScrummaster(usr1);
+            prj.ProductBacklog.Sprints[0].AssignScrummaster(usr2);
             // to Backlog Items
             prj.ProductBacklog.Sprints[0].Items[0].AssignDeveloper(usr1);
             // to Tasks
@@ -69,10 +75,10 @@ namespace AvansTS.Core
             prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].IsDone();
             prj.ProductBacklog.Sprints[0].Items[0].Tasks[1].IsDone();
 
-            //prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].InToDo();
+            prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].InToDo();
 
             // [DEBUGGING: ZONE]
-            Debug.WriteLine(prj.ProductBacklog.Sprints[0].Items[0].IsDone);
+            Debug.WriteLine(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].Developer.Name);
         }
     }
 }

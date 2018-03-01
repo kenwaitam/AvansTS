@@ -9,8 +9,8 @@ namespace AvansTS.Core.Models
 {
     public class SprintBacklog : BacklogBase
     {
-		public DateTime StartDate { get; set; }
-		public DateTime EndDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public Developer Scrummaster { get; set; }
         public Boolean IsCurrent { get; set; }
 

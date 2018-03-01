@@ -1,6 +1,7 @@
 ﻿using AvansTS.Core.Observers;
 using AvansTS.Core.States.Task;
 using AvansTS.Core.States.Task.Implementations;
+using AvansTS.Core.Subjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,7 +28,7 @@ namespace AvansTS.Core.Models
 
             TaskState = ToDoState;
 
-            Attach(Item);
+            AttachToBacklogItem(Item);
         }
 
         public void InToDo()

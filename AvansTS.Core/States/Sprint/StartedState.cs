@@ -19,6 +19,7 @@ namespace AvansTS.Core.States.Sprint.Implementations
             if (Sprint.EndDate == DateTime.Now)
             {
                 Sprint.SprintState = Sprint.FinishedState;
+                Sprint.IsCurrent = false;
             }
         }
     }

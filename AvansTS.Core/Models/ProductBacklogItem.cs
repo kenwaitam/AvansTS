@@ -9,7 +9,7 @@ using System.Text;
 
 namespace AvansTS.Core.Models
 {
-    public class ProductBacklogItem : WorkItemBase, IObserver
+    public class ProductBacklogItem : WorkItemBase, IBacklogItemObserver
     {
         public Boolean IsDone { get; set; }
         public List<Task> Tasks { get; set; }
