@@ -11,6 +11,7 @@ namespace AvansTS.Core.Models
 {
     public class ProductBacklogItem : WorkItemBase, IBacklogItemObserver
     {
+        public DiscussionThread Thread { get; set; }
         public Boolean IsDone { get; set; }
         public List<Task> Tasks { get; set; }
 

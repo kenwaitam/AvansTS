@@ -9,7 +9,6 @@ namespace AvansTS.Core.Models.Base
         public String Title { get; set; }
         public User Developer { get; set; }
         public SprintBacklog Sprint { get; set; }
-        public List<Comment> Comments { get; set; }
 
         public void AssignDeveloper(User user)
         {
