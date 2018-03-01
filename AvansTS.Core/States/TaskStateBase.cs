@@ -4,11 +4,11 @@ using System.Text;
 
 namespace AvansTS.Core.States.Task
 {
-    public abstract class TaskStateBase
+    public abstract class TaskStateBase : ITaskState
     {
 		public abstract string State { get; }
 
-        public virtual void InTodo()
+        public virtual void InToDo()
         {
             throw new InvalidOperationException();
         }

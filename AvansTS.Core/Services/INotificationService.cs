@@ -8,6 +8,6 @@ namespace AvansTS.Core.Services
 {
     public interface INotificationService
     {
-        void Send(Developer user);
+        void Send(User user);
     }
 }

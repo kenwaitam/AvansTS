@@ -1,4 +1,5 @@
 ﻿using AvansTS.Core.Observers;
+using AvansTS.Core.States;
 using AvansTS.Core.States.Task;
 using AvansTS.Core.States.Task.Implementations;
 using AvansTS.Core.Subjects;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace AvansTS.Core.Models
 {
-    public class Task : TaskSubjectBase
+    public class Task : TaskSubjectBase, ITaskState
     {
         public ProductBacklogItem Item { get; set; }
 
@@ -33,7 +34,7 @@ namespace AvansTS.Core.Models
 
         public void InToDo()
         {
-            TaskState.InTodo();
+            TaskState.InToDo();
         }
 
         public void InProgress()
@@ -44,6 +45,11 @@ namespace AvansTS.Core.Models
         public void IsDone()
         {
             TaskState.IsDone();
+        }
+
+        public void InTodo()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -14,13 +14,17 @@ namespace AvansTS.Core
             // SOURCE (UML Guidance):   https://stackoverflow.com/questions/12604031/c-sharp-code-for-association-aggregation-composition
 
             // Create New Accounts
-            Developer usr1 = new Developer { Name = "Ritchie", Email = "rebos1@avans.nl", NotificationOptions = new List<int>() };
-            Developer usr2 = new Developer { Name = "Danny", Email = "kwdtam@avans.nl", NotificationOptions = new List<int>() };
+            User pro1 = new User { Name = "Robin", Email = "robin@avans.nl", NotificationOptions = new List<int>() };
+            User pro2 = new User { Name = "Jos", Email = "jos@avans.nl", NotificationOptions = new List<int>() };
+            User dev1 = new User { Name = "Ritchie", Email = "rebos1@avans.nl", NotificationOptions = new List<int>() };
+            User dev2 = new User { Name = "Danny", Email = "kwdtam@avans.nl", NotificationOptions = new List<int>() };
 
             // Choose Notification Options
-            usr1.AddOption(1);
-            usr1.AddOption(2);
-            usr2.AddOption(1);
+            pro1.AddOption(1);
+            pro2.AddOption(1);
+            dev1.AddOption(1);
+            dev2.AddOption(1);
+            dev2.AddOption(2);
 
 			// Create New Projects
 			Project prj = new Project
@@ -31,11 +35,16 @@ namespace AvansTS.Core
                     Name = "Product Backlog",
                     Sprints = new List<SprintBacklog>(),
                     Items = new List<ProductBacklogItem>()
-                }
+                },
+                ProductOwners = new List<User>()
             };
 
+            // Add Product Owners to Project
+            prj.AddUser(pro1);
+            prj.AddUser(pro2);
+
             // Create New Sprints
-            prj.ProductBacklog.AddSprint(new SprintBacklog
+            prj.ProductBacklog.AddSprint(new SprintBacklog(prj)
             {
                 Name = "Sprint Backlog 1",
                 StartDate = DateTime.Now,
@@ -45,6 +54,7 @@ namespace AvansTS.Core
 
             // Update Sprints
             prj.ProductBacklog.Sprints[0].UpdateName("23IVK3-Sprint 1");
+            prj.ProductBacklog.Sprints[0].UpdateDate(DateTime.Now, DateTime.Now);
 
             // Add Items
             // to Product Backlog
@@ -62,11 +72,11 @@ namespace AvansTS.Core
 
             // Add Developers or Scrummasters
             // to Sprint Backlog
-            prj.ProductBacklog.Sprints[0].AssignScrummaster(usr2);
+            prj.ProductBacklog.Sprints[0].AssignScrummaster(dev1);
             // to Backlog Items
-            prj.ProductBacklog.Sprints[0].Items[0].AssignDeveloper(usr1);
+            prj.ProductBacklog.Sprints[0].Items[0].AssignDeveloper(dev1);
             // to Tasks
-            prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].AssignDeveloper(usr2);
+            prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].AssignDeveloper(dev2);
 
             // Add Tasks to ToDo, Doing, Done
             prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].InProgress();
@@ -77,8 +87,26 @@ namespace AvansTS.Core
 
             prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].InToDo();
 
+            // End Sprints
+            prj.ProductBacklog.Sprints[0].EndSprint();
+
+            // Review Sprints
+            prj.ProductBacklog.Sprints[0].SprintReview();
+
+            // Upload Summaries to Sprint Reviews
+            prj.ProductBacklog.Sprints[0].UploadSummary(true);
+
+            // Release, Cancel or Start
+            // to Deployments
+            prj.ProductBacklog.Sprints[0].DeploymentRelease();
+            // to DevOps Pipelines
+            prj.ProductBacklog.Sprints[0].StartDevelopmentPipeline();
+
+            // Close Sprints
+            prj.ProductBacklog.Sprints[0].CloseSprint();
+
             // [DEBUGGING: ZONE]
-            Debug.WriteLine(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].Developer.Name);
+            Debug.WriteLine(prj.ProductBacklog.Sprints[0].SprintState);
         }
     }
 }
