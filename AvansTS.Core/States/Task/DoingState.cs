@@ -17,8 +17,8 @@ namespace AvansTS.Core.States.Task.Implementations
 
         public override void IsDone()
         {
-            Task.TaskState = Task.DoneState;
             Task.NotifyBacklogItem();
+            Task.TaskState = Task.DoneState;
         }
     }
 }

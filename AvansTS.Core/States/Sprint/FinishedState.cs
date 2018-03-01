@@ -13,5 +13,15 @@ namespace AvansTS.Core.States.Sprint.Implementations
         {
             Sprint = sprint;
         }
+
+        public override void SprintReview()
+        {
+            Sprint.SprintState = Sprint.ReviewState;
+        }
+
+        public override void DeploymentRelease()
+        {
+            Sprint.SprintState = Sprint.ReleasingState;
+        }
     }
 }
