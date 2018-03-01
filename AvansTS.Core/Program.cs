@@ -64,12 +64,6 @@ namespace AvansTS.Core
             prj.ProductBacklog.Sprints[0].AddItem(prj.ProductBacklog.Items[0]);
             prj.ProductBacklog.Sprints[0].AddItem(new ProductBacklogItem { Title = "Backlog Item 2", Tasks = new List<WorkItemComponentBase>() });
 
-			var test = prj.ProductBacklog.Items[0].WorkItemState.State;
-			prj.ProductBacklog.Items[0].WorkItemState.InProgress();
-			test = prj.ProductBacklog.Items[0].WorkItemState.State;
-			prj.ProductBacklog.Items[0].WorkItemState.IsDone();
-			test = prj.ProductBacklog.Items[0].WorkItemState.State;
-
 			// Start Sprints
 			prj.ProductBacklog.Sprints[0].StartSprint();
 
@@ -114,6 +108,17 @@ namespace AvansTS.Core
 
             // [DEBUGGING: ZONE]
             Debug.WriteLine(prj.ProductBacklog.Sprints[0].SprintState);
-        }
+
+			//Debug Backlogitem State transition
+			var test = prj.ProductBacklog.Items[0].WorkItemState.State;
+
+			prj.ProductBacklog.Items[0].WorkItemState.InProgress();
+			test = prj.ProductBacklog.Items[0].WorkItemState.State;
+
+			prj.ProductBacklog.Items[0].WorkItemState.IsDone();
+			test = prj.ProductBacklog.Items[0].WorkItemState.State;
+
+			Debug.WriteLine(test);
+		}
     }
 }
