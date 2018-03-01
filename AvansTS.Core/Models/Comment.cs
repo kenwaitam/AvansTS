@@ -6,7 +6,7 @@ namespace AvansTS.Core.Models
 {
     public class Comment
     {
-		public Developer Developer { get; set; }
+		public User Developer { get; set; }
 		public String CommentText { get; set; }
 	}
 }

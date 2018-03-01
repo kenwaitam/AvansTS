@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AvansTS.Core.Models
 {
-    public class Developer
+    public class User
     {
 		public String Name { get; set; }
         public String Email { get; set; }
@@ -15,7 +15,7 @@ namespace AvansTS.Core.Models
             NotificationOptions.Add(option);
         }
 
-        public void Remove(int option)
+        public void RemoveOption(int option)
         {
             NotificationOptions.Remove(option);
         }

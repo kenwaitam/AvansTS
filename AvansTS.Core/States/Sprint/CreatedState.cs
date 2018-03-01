@@ -5,11 +5,11 @@ using System.Text;
 
 namespace AvansTS.Core.States.Sprint.Implementations
 {
-    public class Created : SprintStateBase
+    public class CreatedState : SprintStateBase
     {
         public SprintBacklog Sprint { get; set; }
 
-        public Created(SprintBacklog sprint)
+        public CreatedState(SprintBacklog sprint)
         {
             Sprint = sprint;
         }
@@ -33,8 +33,8 @@ namespace AvansTS.Core.States.Sprint.Implementations
 
         public override void StartSprint()
         {
-            Sprint.SprintState = Sprint.StartedState;
             Sprint.IsCurrent = true;
+            Sprint.SprintState = Sprint.StartedState;
         }
     }
 }

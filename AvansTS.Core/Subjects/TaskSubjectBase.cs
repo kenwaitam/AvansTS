@@ -25,7 +25,7 @@ namespace AvansTS.Core.Subjects
             BacklogItem.Update();
         }
 
-        public void NotifyScrummaster(Developer user)
+        public void NotifyScrummaster(User user)
         {
             foreach (var option in user.NotificationOptions)
             {

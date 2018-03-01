@@ -5,21 +5,20 @@ using System.Text;
 
 namespace AvansTS.Core.States.Sprint.Implementations
 {
-    public class Started : SprintStateBase
+    public class StartedState : SprintStateBase
     {
         public SprintBacklog Sprint { get; set; }
 
-        public Started(SprintBacklog sprint)
+        public StartedState(SprintBacklog sprint)
         {
             Sprint = sprint;
         }
 
         public override void EndSprint()
         {
-            if (Sprint.EndDate == DateTime.Now)
+            if (Sprint.EndDate <= DateTime.Now)
             {
                 Sprint.SprintState = Sprint.FinishedState;
-                Sprint.IsCurrent = false;
             }
         }
     }
