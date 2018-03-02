@@ -1,4 +1,4 @@
-using AvansTS.Core.States.Task.Implementations;
+using AvansTS.Core.States.WorkItem;
 using System;
 using Xunit;
 
