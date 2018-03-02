@@ -30,10 +30,10 @@ namespace AvansTS.Core.States.Sprint
 		{
 			if (Sprint.IsSubmitted == true)
 			{
-				Sprint.NotifyProductOwners(Sprint.Project.ProductOwners);
-				Sprint.NotifyScrummaster(Sprint.Scrummaster);
 				Sprint.SprintState = Sprint.CanceledState;
-			}
+                Sprint.NotifyProductOwners(Sprint.Project.ProductOwners);
+                Sprint.NotifyScrummaster(Sprint.Scrummaster);
+            }
 		}
 	}
 }

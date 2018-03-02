@@ -36,9 +36,9 @@ namespace AvansTS.Core.States.Sprint.Implementations
 		{
 			if (Sprint.Project.ProductBacklog.Sprints.All(s => s.IsCurrent == false))
 			{
-				Sprint.IsCurrent = true;
 				Sprint.SprintState = Sprint.StartedState;
-			}
+                Sprint.IsCurrent = true;
+            }
 		}
 	}
 }

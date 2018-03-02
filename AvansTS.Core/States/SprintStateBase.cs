@@ -1,7 +1,7 @@
 ﻿using AvansTS.Core.Models;
 using System;
 
-namespace AvansTS.Core.States.Sprint
+namespace AvansTS.Core.States
 {
 	public abstract class SprintStateBase : ISprintState
 	{

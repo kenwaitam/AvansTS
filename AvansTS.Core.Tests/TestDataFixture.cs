@@ -57,8 +57,8 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].AddItem(new ProductBacklogItem { Title = "Backlog Item 2", Tasks = new List<WorkItemComponentBase>() });
 
 			// Add Tasks to Backlog Items
-			prj.ProductBacklog.Items[0].Add(new Task(prj.ProductBacklog.Items[0]) { Title = "Task Item 1" });
-			prj.ProductBacklog.Sprints[0].Items[0].Add(new Task(prj.ProductBacklog.Sprints[0].Items[0]) { Title = "Task Item 2" });
+			prj.ProductBacklog.Items[0].AddTask(new Task(prj.ProductBacklog.Items[0]) { Title = "Task Item 1" });
+			prj.ProductBacklog.Sprints[0].Items[0].AddTask(new Task(prj.ProductBacklog.Sprints[0].Items[0]) { Title = "Task Item 2" });
 
 			// Add Developers or Scrummasters
 			// to Sprint Backlog
