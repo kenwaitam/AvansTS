@@ -11,7 +11,7 @@ using System.Text;
 
 namespace AvansTS.Core.Subjects
 {
-    public abstract class TaskSubjectBase : WorkItemBase
+    public abstract class WorkItemSubjectBase
     {
         public IBacklogItemObserver BacklogItem { get; set; }
 

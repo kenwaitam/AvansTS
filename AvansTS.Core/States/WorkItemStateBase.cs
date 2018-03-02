@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AvansTS.Core.States.Task
 {
-    public abstract class TaskStateBase : ITaskState
+    public abstract class WorkItemStateBase : IWorkItemState
     {
 		public abstract string State { get; }
 

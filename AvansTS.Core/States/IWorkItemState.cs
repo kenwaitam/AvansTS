@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AvansTS.Core.States
 {
-    public interface ITaskState
+    public interface IWorkItemState
     {
         void InToDo();
         void InProgress();
