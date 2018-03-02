@@ -1,6 +1,7 @@
 ﻿using AvansTS.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AvansTS.Core.States.Sprint.Implementations
@@ -35,8 +36,11 @@ namespace AvansTS.Core.States.Sprint.Implementations
 
         public override void StartSprint()
         {
-            Sprint.IsCurrent = true;
-            Sprint.SprintState = Sprint.StartedState;
+            if (Sprint.Project.ProductBacklog.Sprints.All(s => s.IsCurrent == false))
+            {
+                Sprint.IsCurrent = true;
+                Sprint.SprintState = Sprint.StartedState;
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ using AvansTS.Core.States.Task;
 using AvansTS.Core.Subjects;
 using System;
 
-namespace AvansTS.Core.Composite
+namespace AvansTS.Core.Components
 {
 	public abstract class WorkItemComponentBase : WorkItemSubjectBase, IWorkItemState
     {

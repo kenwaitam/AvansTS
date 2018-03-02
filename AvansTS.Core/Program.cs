@@ -1,6 +1,5 @@
-﻿using AvansTS.Core.Composite;
-using AvansTS.Core.Models;
-using AvansTS.Core.Singletons;
+﻿using AvansTS.Core.Models;
+using AvansTS.Core.Factories;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

@@ -18,6 +18,7 @@ namespace AvansTS.Core.States.Sprint
 
         public override void CloseSprint()
         {
+            Sprint.IsCurrent = false;
             Sprint.SprintState = Sprint.ClosedState;
         }
     }
