@@ -11,10 +11,11 @@ namespace AvansTS.Core.Services.Notification
 			Debug.WriteLine("Email notification sended to " + user.Email);
 
 			// Fake via log
-			FileLogger FileLog = new FileLogger();
+			FileLoggerService FileLog = new FileLoggerService();
 			using (StreamWriter w = File.AppendText(@".\Logs\EmailLog.txt"))
 			{
 				FileLog.Log("Email notification sended to " + user.Email, w);
+				w.Close();
 			}
 		}
 	}

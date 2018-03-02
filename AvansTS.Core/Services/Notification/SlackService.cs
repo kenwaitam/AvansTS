@@ -11,10 +11,11 @@ namespace AvansTS.Core.Services.Notification
 			Debug.WriteLine("Slack notification sended to " + user.Name);
 
 			//Fake via log
-			FileLogger FileLog = new FileLogger();
+			FileLoggerService FileLog = new FileLoggerService();
 			using (StreamWriter w = File.AppendText(@".\Logs\SlackLog.txt"))
 			{
 				FileLog.Log("Slack notification sended to " + user.Name, w);
+				w.Close();
 			}
 
 		}
