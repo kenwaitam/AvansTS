@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AvansTS.Core.States.Task
+namespace AvansTS.Core.States
 {
 	public abstract class WorkItemStateBase : IWorkItemState
 	{

@@ -1,12 +1,11 @@
 ﻿using AvansTS.Core.Models;
 using AvansTS.Core.States;
-using AvansTS.Core.States.Task;
 using AvansTS.Core.Subjects;
 using System;
 
 namespace AvansTS.Core.Components
 {
-	public abstract class WorkItemComponentBase : WorkItemSubjectBase, IWorkItemState
+    public abstract class WorkItemComponentBase : WorkItemSubjectBase, IWorkItemState
 	{
 		public String Title { get; set; }
 		public User Developer { get; set; }
@@ -22,12 +21,12 @@ namespace AvansTS.Core.Components
 			Developer = user;
 		}
 
-		public virtual void Add(WorkItemComponentBase component)
+		public virtual void AddTask(WorkItemComponentBase component)
 		{
 			throw new InvalidOperationException();
 		}
 
-		public virtual void Remove(WorkItemComponentBase component)
+		public virtual void RemoveTask(WorkItemComponentBase component)
 		{
 			throw new InvalidOperationException();
 		}

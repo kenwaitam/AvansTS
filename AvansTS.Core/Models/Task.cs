@@ -1,11 +1,11 @@
 ﻿using AvansTS.Core.Components;
 using AvansTS.Core.Services;
 using AvansTS.Core.States;
-using AvansTS.Core.States.Task.Implementations;
+using AvansTS.Core.States.WorkItem;
 
 namespace AvansTS.Core.Models
 {
-	public class Task : WorkItemComponentBase, IWorkItemState
+    public class Task : WorkItemComponentBase, IWorkItemState
 	{
 		public ProductBacklogItem Item { get; set; }
 
