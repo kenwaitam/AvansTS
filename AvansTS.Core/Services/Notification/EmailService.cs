@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AvansTS.Core.Models;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
-using AvansTS.Core.Models;
 
 namespace AvansTS.Core.Services.Notification
 {
-    public class EmailService : INotificationService
-    {
-        public void Send(User user)
-        {
-            Debug.WriteLine("Email notification sended to " + user.Email);
+	public class EmailService : INotificationService
+	{
+		public void Send(User user)
+		{
+			Debug.WriteLine("Email notification sended to " + user.Email);
 
 			// Fake via log
 			FileLogger FileLog = new FileLogger();
@@ -20,5 +17,5 @@ namespace AvansTS.Core.Services.Notification
 				FileLog.Log("Email notification sended to " + user.Email, w);
 			}
 		}
-    }
+	}
 }

@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace AvansTS.Core.Services
 {
-    public class FileLogger
-    {
+	public class FileLogger
+	{
 		public FileLogger()
 		{
 			Directory.CreateDirectory(@".\Logs\");

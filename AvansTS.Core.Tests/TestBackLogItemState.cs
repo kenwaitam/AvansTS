@@ -4,7 +4,7 @@ using Xunit;
 namespace AvansTS.Core.Tests
 {
 	public class TestBackLogItemState : TestDataFixture
-    {
+	{
 		//Test the first state
 		[Fact]
 		public void FirstState()

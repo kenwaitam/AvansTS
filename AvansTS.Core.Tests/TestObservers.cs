@@ -1,13 +1,13 @@
-﻿using System.IO;
+﻿using AvansTS.Core.Observers;
+using Moq;
+using System.IO;
 using System.Linq;
 using Xunit;
-using Moq;
-using AvansTS.Core.Observers;
 
 namespace AvansTS.Core.Tests
 {
 	public class TestObservers : TestDataFixture
-    {
+	{
 		public TestObservers()
 		{
 			// Add Tasks to ToDo, Doing, Done
@@ -55,9 +55,9 @@ namespace AvansTS.Core.Tests
 		{
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[1].IsDone();
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].InToDo();
-			
+
 			var email = File.ReadLines("./Logs/EmailLog.txt").Last();
-			
+
 			Assert.Equal("Email notification sended to " + prj.ProductBacklog.Sprints[0].Scrummaster.Email, email);
 			Assert.False(prj.ProductBacklog.Sprints[0].Items[0].Done);
 		}

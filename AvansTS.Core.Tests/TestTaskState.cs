@@ -1,8 +1,5 @@
-using AvansTS.Core.Models;
-using AvansTS.Core.States.Task;
 using AvansTS.Core.States.Task.Implementations;
 using System;
-using System.Collections.Generic;
 using Xunit;
 
 namespace AvansTS.Core.Tests

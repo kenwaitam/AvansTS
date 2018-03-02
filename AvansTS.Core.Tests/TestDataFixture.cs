@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace AvansTS.Core.Tests
 {
 	public class TestDataFixture
-    {
+	{
 		// Create New Accounts
 		public User pro1 = new User { Name = "Robin", Email = "robin@avans.nl", NotificationOptions = new List<int>() };
 		public User pro2 = new User { Name = "Jos", Email = "jos@avans.nl", NotificationOptions = new List<int>() };

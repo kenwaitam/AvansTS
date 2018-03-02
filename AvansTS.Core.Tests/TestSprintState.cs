@@ -4,13 +4,12 @@ using AvansTS.Core.States.Sprint;
 using AvansTS.Core.States.Sprint.Implementations;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace AvansTS.Core.Tests
 {
 	public class TestSprintState : TestDataFixture
-    {
+	{
 		//Test the first state
 		[Fact]
 		public void TestFirstState()
@@ -198,7 +197,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].StartSprint();
 			prj.ProductBacklog.Sprints[0].EndDate = DateTime.Now;
 			prj.ProductBacklog.Sprints[0].EndSprint();
-				prj.ProductBacklog.Sprints[0].SprintReview();
+			prj.ProductBacklog.Sprints[0].SprintReview();
 			Assert.IsType<ReviewState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 

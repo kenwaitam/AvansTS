@@ -7,7 +7,7 @@ using System;
 namespace AvansTS.Core.Components
 {
 	public abstract class WorkItemComponentBase : WorkItemSubjectBase, IWorkItemState
-    {
+	{
 		public String Title { get; set; }
 		public User Developer { get; set; }
 		public SprintBacklog Sprint { get; set; }
@@ -22,11 +22,12 @@ namespace AvansTS.Core.Components
 			Developer = user;
 		}
 
-		public virtual void Add(WorkItemComponentBase component) {
+		public virtual void Add(WorkItemComponentBase component)
+		{
 			throw new InvalidOperationException();
 		}
 
-        public virtual void Remove(WorkItemComponentBase component)
+		public virtual void Remove(WorkItemComponentBase component)
 		{
 			throw new InvalidOperationException();
 		}
