@@ -1,5 +1,6 @@
 ﻿using AvansTS.Core.Composite;
 using AvansTS.Core.Models;
+using AvansTS.Core.States.Sprint.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +17,7 @@ namespace AvansTS.Core.Tests
 			var state = prj.ProductBacklog.Sprints[0].SprintState.State;
 			Assert.Equal("Created", state);
 			//Assert.False(prj.ProductBacklog.Sprints[0].IsCurrent);
+			Assert.IsType<CreatedState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 
 		//Test created should able to update
@@ -32,6 +34,7 @@ namespace AvansTS.Core.Tests
 			Assert.Equal(DateTime.Now.AddDays(2).Date, prj.ProductBacklog.Sprints[0].EndDate.Date);
 			Assert.Equal("New", prj.ProductBacklog.Sprints[0].Name);
 			Assert.Equal(3, prj.ProductBacklog.Sprints[0].Items.Count);
+			Assert.IsType<CreatedState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 
 		//Test started should not able to update
@@ -56,6 +59,7 @@ namespace AvansTS.Core.Tests
 			Assert.Equal(DateTime.Now.AddDays(5).Date, prj.ProductBacklog.Sprints[0].EndDate.Date);
 			Assert.Equal("Sprint Backlog 1", prj.ProductBacklog.Sprints[0].Name);
 			Assert.Equal(2, prj.ProductBacklog.Sprints[0].Items.Count);
+			Assert.IsType<StartedState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 
 		//Test finished should not able to update
@@ -82,6 +86,7 @@ namespace AvansTS.Core.Tests
 			Assert.Equal(DateTime.Now.Date, prj.ProductBacklog.Sprints[0].EndDate.Date);
 			Assert.Equal("Sprint Backlog 1", prj.ProductBacklog.Sprints[0].Name);
 			Assert.Equal(2, prj.ProductBacklog.Sprints[0].Items.Count);
+			Assert.IsType<FinishedState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 
 		//Test the created to started
@@ -95,6 +100,7 @@ namespace AvansTS.Core.Tests
 			state = prj.ProductBacklog.Sprints[0].SprintState.State;
 			Assert.Equal("Started", state);
 			//Assert.True(prj.ProductBacklog.Sprints[0].IsCurrent);
+			Assert.IsType<StartedState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 
 		//Test the created to finished
@@ -106,6 +112,7 @@ namespace AvansTS.Core.Tests
 			var state = prj.ProductBacklog.Sprints[0].SprintState.State;
 			Assert.Equal("Created", state);
 			//Assert.False(prj.ProductBacklog.Sprints[0].IsCurrent);
+			Assert.IsType<CreatedState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 
 		//Test the started to started
@@ -121,6 +128,7 @@ namespace AvansTS.Core.Tests
 			state = prj.ProductBacklog.Sprints[0].SprintState.State;
 			Assert.Equal("Started", state);
 			//Assert.True(prj.ProductBacklog.Sprints[0].IsCurrent);
+			Assert.IsType<StartedState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 
 		//Test the started to finishedBeforeDate
@@ -137,6 +145,7 @@ namespace AvansTS.Core.Tests
 			state = prj.ProductBacklog.Sprints[0].SprintState.State;
 			Assert.Equal("Started", state);
 			//Assert.True(prj.ProductBacklog.Sprints[0].IsCurrent);
+			Assert.IsType<StartedState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 
 		//Test the started to finished on date
@@ -153,6 +162,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].EndSprint();
 			state = prj.ProductBacklog.Sprints[0].SprintState.State;
 			Assert.Equal("Finished", state);
+			Assert.IsType<FinishedState>(prj.ProductBacklog.Sprints[0].SprintState);
 			//Assert.True(prj.ProductBacklog.Sprints[0].IsCurrent);
 		}
 
@@ -186,6 +196,7 @@ namespace AvansTS.Core.Tests
 			Assert.Throws<InvalidOperationException>(() =>
 				prj.ProductBacklog.Sprints[0].StartSprint());
 			//Assert.True(prj.ProductBacklog.Sprints[0].IsCurrent);
+			Assert.IsType<FinishedState>(prj.ProductBacklog.Sprints[0].SprintState);
 
 		}
 
@@ -201,6 +212,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].EndSprint();
 			Assert.Throws<InvalidOperationException>(() =>
 				prj.ProductBacklog.Sprints[0].EndSprint());
+			Assert.IsType<FinishedState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 	}
 }
