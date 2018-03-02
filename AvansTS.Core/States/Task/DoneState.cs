@@ -1,16 +1,17 @@
-﻿using System;
+﻿using AvansTS.Core.Composite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AvansTS.Core.States.Task.Implementations
 {
-    public class Done : TaskStateBase
+    public class DoneState : WorkItemStateBase
     {
-        public Models.Task Task { get; set; }
+        public WorkItemComponentBase Task { get; set; }
 
 		public override string State { get { return "Done"; } }
 
-		public Done(Models.Task task)
+		public DoneState(WorkItemComponentBase task)
         {
             Task = task;
         }
@@ -19,7 +20,7 @@ namespace AvansTS.Core.States.Task.Implementations
         {
             Task.NotifyBacklogItem();
             Task.NotifyScrummaster(Task.Sprint.Scrummaster);
-            Task.TaskState = Task.ToDoState;
+            Task.WorkItemState = Task.ToDoState;
         }
     }
 }

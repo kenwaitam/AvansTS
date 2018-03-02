@@ -1,35 +1,59 @@
-﻿using AvansTS.Core.Models.Base;
+﻿using AvansTS.Core.Composite;
 using AvansTS.Core.Observers;
-using AvansTS.Core.States.Task.Implementations;
+using AvansTS.Core.States;
+using AvansTS.Core.States.BacklogItem;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 
 namespace AvansTS.Core.Models
 {
-    public class ProductBacklogItem : WorkItemBase, IBacklogItemObserver
+	public class ProductBacklogItem : WorkItemComponentBase, IBacklogItemObserver, IWorkItemState
     {
         public DiscussionThread Thread { get; set; }
-        public Boolean IsDone { get; set; }
-        public List<Task> Tasks { get; set; }
+        public Boolean Done { get; set; }
+        public List<WorkItemComponentBase> Tasks { get; set; }
 
-        public void AddTask(Task task)
+		public ProductBacklogItem()
+		{
+			ToDoState = new ToDoState(this);
+			DoingState = new DoingState(this);
+			DoneState = new DoneState(this);
+
+			WorkItemState = ToDoState;
+		}
+
+		//Add Task
+        public override void Add(WorkItemComponentBase task)
         {
             Tasks.Add(task);
         }
 
         public void Update()
         {
-            if (Tasks.All(t => t.TaskState == t.DoneState))
+            if (Tasks.All(t => t.WorkItemState == t.DoneState))
             {
-                IsDone = true;
+                Done = true;
             }
             else
             {
-                IsDone = false;
+                Done = false;
             }
         }
-    }
+
+		public override void InToDo()
+		{
+			WorkItemState.InToDo();
+		}
+
+		public override void InProgress()
+		{
+			WorkItemState.InProgress();
+		}
+
+		public override void IsDone()
+		{
+			WorkItemState.IsDone();
+		}
+	}
 }

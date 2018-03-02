@@ -4,7 +4,7 @@ using AvansTS.Core.Observers;
 
 namespace AvansTS.Core.Subjects
 {
-    public abstract class TaskSubjectBase : WorkItemBase
+    public abstract class WorkItemSubjectBase
     {
         public IBacklogItemObserver BacklogItem { get; set; }
         public INotificationObserver NotificationService { get; set; }

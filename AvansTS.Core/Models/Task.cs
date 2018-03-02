@@ -1,52 +1,42 @@
 ﻿using AvansTS.Core.Observers;
 using AvansTS.Core.Services;
 using AvansTS.Core.States;
-using AvansTS.Core.States.Task;
 using AvansTS.Core.States.Task.Implementations;
-using AvansTS.Core.Subjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AvansTS.Core.Models
 {
-    public class Task : TaskSubjectBase, ITaskState
+	public class Task : WorkItemComponentBase, IWorkItemState
     {
         public ProductBacklogItem Item { get; set; }
-
-        public TaskStateBase TaskState { get; set; }
-        public TaskStateBase ToDoState { get; set; }
-        public TaskStateBase DoingState { get; set; }
-        public TaskStateBase DoneState { get; set; }
 
         public Task(ProductBacklogItem item)
         {
             ToDoState = new ToDoState(this);
             DoingState = new DoingState(this);
-            DoneState = new Done(this);
+            DoneState = new DoneState(this);
 
             Item = item;
             Sprint = item.Sprint;
 
-            TaskState = ToDoState;
+            WorkItemState = ToDoState;
 
             AttachToBacklogItem(Item);
             AttachToNotificationService(new NotificationService());
         }
 
-        public void InToDo()
+        public override void InToDo()
         {
-            TaskState.InToDo();
+            WorkItemState.InToDo();
         }
 
-        public void InProgress()
+        public override void InProgress()
         {
-            TaskState.InProgress();
+            WorkItemState.InProgress();
         }
 
-        public void IsDone()
+        public override void IsDone()
         {
-            TaskState.IsDone();
+            WorkItemState.IsDone();
         }
     }
 }

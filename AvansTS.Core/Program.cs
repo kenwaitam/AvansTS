@@ -58,17 +58,17 @@ namespace AvansTS.Core
 
             // Add Items
             // to Product Backlog
-            prj.ProductBacklog.AddItem(new ProductBacklogItem { Title = "Backlog Item 1", Tasks = new List<Task>() });
+            prj.ProductBacklog.AddItem(new ProductBacklogItem { Title = "Backlog Item 1", Tasks = new List<WorkItemComponentBase>() });
             // to Sprint Backlog
             prj.ProductBacklog.Sprints[0].AddItem(prj.ProductBacklog.Items[0]);
-            prj.ProductBacklog.Sprints[0].AddItem(new ProductBacklogItem { Title = "Backlog Item 2", Tasks = new List<Task>() });
+            prj.ProductBacklog.Sprints[0].AddItem(new ProductBacklogItem { Title = "Backlog Item 2", Tasks = new List<WorkItemComponentBase>() });
 
-            // Start Sprints
-            prj.ProductBacklog.Sprints[0].StartSprint();
+			// Start Sprints
+			prj.ProductBacklog.Sprints[0].StartSprint();
 
             // Add Tasks to Backlog Items
-            prj.ProductBacklog.Items[0].AddTask(new Task(prj.ProductBacklog.Items[0]) { Title = "Task Item 1" });
-            prj.ProductBacklog.Sprints[0].Items[0].AddTask(new Task(prj.ProductBacklog.Sprints[0].Items[0]) { Title = "Task Item 2" });
+            prj.ProductBacklog.Items[0].Add(new Task(prj.ProductBacklog.Items[0]) { Title = "Task Item 1" });
+            prj.ProductBacklog.Sprints[0].Items[0].Add(new Task(prj.ProductBacklog.Sprints[0].Items[0]) { Title = "Task Item 2" });
 
             // Add Developers or Scrummasters
             // to Sprint Backlog
@@ -107,6 +107,17 @@ namespace AvansTS.Core
 
             // [DEBUGGING: ZONE]
             Debug.WriteLine(prj.ProductBacklog.Sprints[0].SprintState);
-        }
+
+			//Debug Backlogitem State transition
+			var test = prj.ProductBacklog.Items[0].WorkItemState.State;
+
+			prj.ProductBacklog.Items[0].WorkItemState.InProgress();
+			test = prj.ProductBacklog.Items[0].WorkItemState.State;
+
+			prj.ProductBacklog.Items[0].WorkItemState.IsDone();
+			test = prj.ProductBacklog.Items[0].WorkItemState.State;
+
+			Debug.WriteLine(test);
+		}
     }
 }
