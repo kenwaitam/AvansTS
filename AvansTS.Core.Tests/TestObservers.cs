@@ -29,7 +29,7 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void TestBacklogItemTaskBackToToDoSlackNotification()
 		{
-			prj.ProductBacklog.Sprints[0].Items[0].AssignDeveloper(usr2);
+			prj.ProductBacklog.Sprints[0].Items[0].AssignDeveloper(dev2);
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[1].IsDone();
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].InToDo();
 
@@ -43,7 +43,7 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void TestBacklogItemTaskBackToToDoEmailNotification()
 		{
-			usr1.AddOption(1);
+			dev1.AddOption(1);
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[1].IsDone();
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].InToDo();
 			
