@@ -20,8 +20,6 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void FirstState()
 		{
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("ToDo", state);
 			Assert.IsType<ToDoState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
@@ -29,12 +27,9 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void ToDo_To_ToDo()
 		{
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("ToDo", state);
+			Assert.IsType<ToDoState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 			Assert.Throws<InvalidOperationException>(() =>
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InToDo());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("ToDo", state);
 			Assert.IsType<ToDoState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
@@ -43,8 +38,6 @@ namespace AvansTS.Core.Tests
 		public void ToDo_To_Doing()
 		{
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Doing", state);
 			Assert.IsType<DoingState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
@@ -52,12 +45,9 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void ToDo_To_Done()
 		{
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("ToDo", state);
+			Assert.IsType<ToDoState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 			Assert.Throws<InvalidOperationException>(() =>
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("ToDo", state);
+				prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone());
 			Assert.IsType<ToDoState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
@@ -66,12 +56,9 @@ namespace AvansTS.Core.Tests
 		public void Doing_To_ToDo()
 		{
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Doing", state);
+			Assert.IsType<DoingState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 			Assert.Throws<InvalidOperationException>(() =>
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InToDo());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Doing", state);
+				prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InToDo());
 			Assert.IsType<DoingState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
@@ -80,12 +67,9 @@ namespace AvansTS.Core.Tests
 		public void Doing_To_Doing()
 		{
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Doing", state);
+			Assert.IsType<DoingState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 			Assert.Throws<InvalidOperationException>(() =>
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Doing", state);
 			Assert.IsType<DoingState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
@@ -95,8 +79,6 @@ namespace AvansTS.Core.Tests
 		{
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Done", state);
 			Assert.IsType<DoneState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
@@ -106,11 +88,8 @@ namespace AvansTS.Core.Tests
 		{
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Done", state);
+			Assert.IsType<DoneState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InToDo();
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("ToDo", state);
 			Assert.IsType<ToDoState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 
 		}
@@ -121,12 +100,9 @@ namespace AvansTS.Core.Tests
 		{
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Done", state);
+			Assert.IsType<DoneState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 			Assert.Throws<InvalidOperationException>(() =>
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Done", state);
 			Assert.IsType<DoneState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
@@ -136,12 +112,9 @@ namespace AvansTS.Core.Tests
 		{
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Done", state);
+			Assert.IsType<DoneState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 			Assert.Throws<InvalidOperationException>(() =>
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
-			Assert.Equal("Done", state);
 			Assert.IsType<DoneState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 	}
