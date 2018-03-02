@@ -1,12 +1,11 @@
-﻿using AvansTS.Core.Composite;
+﻿using AvansTS.Core.Components;
 using AvansTS.Core.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AvansTS.Core.Tests
 {
-    public class TestDataFixture
+	public class TestDataFixture
     {
 		// Create New Accounts
 		public User pro1 = new User { Name = "Robin", Email = "robin@avans.nl", NotificationOptions = new List<int>() };

@@ -1,4 +1,4 @@
-﻿using AvansTS.Core.Composite;
+﻿using AvansTS.Core.Components;
 using AvansTS.Core.Models;
 using AvansTS.Core.States.Sprint;
 using AvansTS.Core.States.Sprint.Implementations;

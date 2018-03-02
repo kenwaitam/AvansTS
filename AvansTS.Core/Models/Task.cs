@@ -1,4 +1,4 @@
-﻿using AvansTS.Core.Observers;
+﻿using AvansTS.Core.Components;
 using AvansTS.Core.Services;
 using AvansTS.Core.States;
 using AvansTS.Core.States.Task.Implementations;

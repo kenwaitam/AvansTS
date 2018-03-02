@@ -1,8 +1,5 @@
-﻿using AvansTS.Core.Composite;
+﻿using AvansTS.Core.Components;
 using AvansTS.Core.States.Task;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AvansTS.Core.States.BacklogItem
 {

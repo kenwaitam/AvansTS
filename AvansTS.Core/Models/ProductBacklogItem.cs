@@ -1,4 +1,4 @@
-﻿using AvansTS.Core.Composite;
+﻿using AvansTS.Core.Components;
 using AvansTS.Core.Observers;
 using AvansTS.Core.States;
 using AvansTS.Core.States.BacklogItem;

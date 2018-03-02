@@ -1,12 +1,8 @@
-﻿using AvansTS.Core.Composite;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿using AvansTS.Core.Components;
 
 namespace AvansTS.Core.States.Task.Implementations
 {
-    public class ToDoState : WorkItemStateBase
+	public class ToDoState : WorkItemStateBase
     {
         public WorkItemComponentBase Task { get; set; }
 

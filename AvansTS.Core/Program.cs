@@ -1,12 +1,12 @@
-﻿using AvansTS.Core.Models;
-using AvansTS.Core.Factories;
+﻿using AvansTS.Core.Components;
+using AvansTS.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace AvansTS.Core
 {
-    class Program
+	class Program
     {
         static void Main(string[] args)
         {
