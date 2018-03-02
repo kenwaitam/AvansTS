@@ -19,7 +19,7 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void FirstState()
 		{
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("ToDo", state);
 		}
 
@@ -27,11 +27,11 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void ToDo_To_ToDo()
 		{
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("ToDo", state);
 			Assert.Throws<InvalidOperationException>(() =>
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InToDo());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InToDo());
+			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("ToDo", state);
 		}
 
@@ -39,8 +39,8 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void ToDo_To_Doing()
 		{
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
+			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Doing", state);
 		}
 
@@ -48,11 +48,11 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void ToDo_To_Done()
 		{
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("ToDo", state);
 			Assert.Throws<InvalidOperationException>(() =>
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.IsDone());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone());
+			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("ToDo", state);
 		}
 
@@ -60,12 +60,12 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void Doing_To_ToDo()
 		{
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
+			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Doing", state);
 			Assert.Throws<InvalidOperationException>(() =>
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InToDo());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InToDo());
+			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Doing", state);
 		}
 
@@ -73,12 +73,12 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void Doing_To_Doing()
 		{
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
+			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Doing", state);
 			Assert.Throws<InvalidOperationException>(() =>
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress());
+			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Doing", state);
 		}
 
@@ -86,9 +86,9 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void Doing_To_Done()
 		{
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress();
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.IsDone();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone();
+			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Done", state);
 		}
 
@@ -96,12 +96,12 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void Done_To_ToDo()
 		{
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress();
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.IsDone();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone();
+			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Done", state);
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InToDo();
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InToDo();
+			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("ToDo", state);
 
 		}
@@ -110,13 +110,13 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void Done_To_Doing()
 		{
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress();
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.IsDone();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone();
+			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Done", state);
 			Assert.Throws<InvalidOperationException>(() =>
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress());
+			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Done", state);
 		}
 
@@ -124,13 +124,13 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void Done_To_Done()
 		{
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress();
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.IsDone();
-			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone();
+			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Done", state);
 			Assert.Throws<InvalidOperationException>(() =>
-			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.InProgress());
-			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].TaskState.State;
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress());
+			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Done", state);
 		}
 	}

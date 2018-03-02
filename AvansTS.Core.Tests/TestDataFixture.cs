@@ -15,7 +15,7 @@ namespace AvansTS.Core.Tests
 		public User dev2 = new User { Name = "Danny", Email = "kwdtam@avans.nl", NotificationOptions = new List<int>() };
 
 		// Create New Projects
-		Project prj = new Project
+		public Project prj = new Project
 		{
 			Name = "AvansTS",
 			ProductBacklog = new ProductBacklog
@@ -35,7 +35,6 @@ namespace AvansTS.Core.Tests
 			pro1.AddOption(1);
 			pro2.AddOption(1);
 			dev1.AddOption(1);
-			dev2.AddOption(1);
 			dev2.AddOption(2);
 
 			// Add Product Owners to Project

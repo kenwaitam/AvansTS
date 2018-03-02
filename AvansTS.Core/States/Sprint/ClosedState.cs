@@ -9,7 +9,9 @@ namespace AvansTS.Core.States.Sprint
     {
         public SprintBacklog Sprint { get; set; }
 
-        public ClosedState(SprintBacklog sprint)
+		public override string State { get { return "Closed"; } }
+
+		public ClosedState(SprintBacklog sprint)
         {
             Sprint = sprint;
         }

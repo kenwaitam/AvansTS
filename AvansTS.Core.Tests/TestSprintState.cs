@@ -1,4 +1,5 @@
-﻿using AvansTS.Core.Models;
+﻿using AvansTS.Core.Composite;
+using AvansTS.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,7 +26,7 @@ namespace AvansTS.Core.Tests
 			Assert.Equal("Created", state);
 			prj.ProductBacklog.Sprints[0].UpdateDate(DateTime.Now.AddDays(1), DateTime.Now.AddDays(2));
 			prj.ProductBacklog.Sprints[0].UpdateName("New");
-			prj.ProductBacklog.Sprints[0].AddItem(new ProductBacklogItem { Title = "Backlog Item 2", Tasks = new List<Task>() });
+			prj.ProductBacklog.Sprints[0].AddItem(new ProductBacklogItem { Title = "Backlog Item 2", Tasks = new List<WorkItemComponentBase>() });
 
 			Assert.Equal(DateTime.Now.AddDays(1).Date, prj.ProductBacklog.Sprints[0].StartDate.Date);
 			Assert.Equal(DateTime.Now.AddDays(2).Date, prj.ProductBacklog.Sprints[0].EndDate.Date);
@@ -49,7 +50,7 @@ namespace AvansTS.Core.Tests
 			Assert.Throws<InvalidOperationException>(() =>
 				prj.ProductBacklog.Sprints[0].UpdateName("New"));
 			Assert.Throws<InvalidOperationException>(() =>
-				prj.ProductBacklog.Sprints[0].AddItem(new ProductBacklogItem { Title = "Backlog Item 2", Tasks = new List<Task>() }));
+				prj.ProductBacklog.Sprints[0].AddItem(new ProductBacklogItem { Title = "Backlog Item 2", Tasks = new List<WorkItemComponentBase>() }));
 
 			Assert.Equal(DateTime.Now.Date, prj.ProductBacklog.Sprints[0].StartDate.Date);
 			Assert.Equal(DateTime.Now.AddDays(5).Date, prj.ProductBacklog.Sprints[0].EndDate.Date);
@@ -75,7 +76,7 @@ namespace AvansTS.Core.Tests
 			Assert.Throws<InvalidOperationException>(() =>
 				prj.ProductBacklog.Sprints[0].UpdateName("New"));
 			Assert.Throws<InvalidOperationException>(() =>
-				prj.ProductBacklog.Sprints[0].AddItem(new ProductBacklogItem { Title = "Backlog Item 2", Tasks = new List<Task>() }));
+				prj.ProductBacklog.Sprints[0].AddItem(new ProductBacklogItem { Title = "Backlog Item 2", Tasks = new List<WorkItemComponentBase>() }));
 
 			Assert.Equal(DateTime.Now.Date, prj.ProductBacklog.Sprints[0].StartDate.Date);
 			Assert.Equal(DateTime.Now.Date, prj.ProductBacklog.Sprints[0].EndDate.Date);
@@ -148,11 +149,11 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].StartSprint();
 			state = prj.ProductBacklog.Sprints[0].SprintState.State;
 			Assert.Equal("Started", state);
-			prj.ProductBacklog.Sprints[0].EndDate = DateTime.Now;
+			prj.ProductBacklog.Sprints[0].EndDate = DateTime.Now.Date;
 			prj.ProductBacklog.Sprints[0].EndSprint();
 			state = prj.ProductBacklog.Sprints[0].SprintState.State;
 			Assert.Equal("Finished", state);
-			Assert.False(prj.ProductBacklog.Sprints[0].IsCurrent);
+			Assert.True(prj.ProductBacklog.Sprints[0].IsCurrent);
 		}
 
 		//Test the started to finished after date
@@ -184,7 +185,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].EndSprint();
 			Assert.Throws<InvalidOperationException>(() =>
 				prj.ProductBacklog.Sprints[0].StartSprint());
-			Assert.False(prj.ProductBacklog.Sprints[0].IsCurrent);
+			Assert.True(prj.ProductBacklog.Sprints[0].IsCurrent);
 
 		}
 
