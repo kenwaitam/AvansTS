@@ -1,10 +1,11 @@
-﻿using AvansTS.Core.States.Task;
+﻿using AvansTS.Core.States;
+using AvansTS.Core.States.Task;
 using AvansTS.Core.Subjects;
 using System;
 
 namespace AvansTS.Core.Composite
 {
-	public abstract class WorkItemComponentBase : WorkItemSubjectBase
+	public abstract class WorkItemComponentBase : WorkItemSubjectBase, IWorkItemState
     {
 		public WorkItemStateBase WorkItemState { get; set; }
 		public WorkItemStateBase ToDoState { get; set; }
@@ -13,18 +14,13 @@ namespace AvansTS.Core.Composite
 
 		public WorkItemComponentBase()
 		{
-			//ToDoState = new ToDoState(this);
-			//DoingState = new DoingState(this);
-			//DoneState = new DoneState(this);
-
-			//WorkItemState = ToDoState;
 		}
 
 		public virtual void Add(WorkItemComponentBase component) {
 			throw new InvalidOperationException();
 		}
 
-        public void Remove(WorkItemComponentBase component)
+        public virtual void Remove(WorkItemComponentBase component)
 		{
 			throw new InvalidOperationException();
 		}
