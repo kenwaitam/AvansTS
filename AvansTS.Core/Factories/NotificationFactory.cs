@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AvansTS.Core.Singletons
+namespace AvansTS.Core.Factories
 {
     public class NotificationFactory
     {

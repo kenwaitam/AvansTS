@@ -1,4 +1,5 @@
 ﻿using AvansTS.Core.Models.Base;
+using AvansTS.Core.Services;
 using AvansTS.Core.States;
 using AvansTS.Core.States.Sprint;
 using AvansTS.Core.States.Sprint.Implementations;
@@ -43,6 +44,8 @@ namespace AvansTS.Core.Models
             Project = project;
 
             SprintState = CreatedState;
+
+            AttachToNotificationService(new NotificationService());
         }
 
         public void AssignScrummaster(User user)

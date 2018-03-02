@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AvansTS.Core.Composite
+namespace AvansTS.Core.Components
 {
     public abstract class WorkItemComponentBase : WorkItemBase
     {

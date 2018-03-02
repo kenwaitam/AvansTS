@@ -1,4 +1,5 @@
 ﻿using AvansTS.Core.Observers;
+using AvansTS.Core.Services;
 using AvansTS.Core.States;
 using AvansTS.Core.States.Task;
 using AvansTS.Core.States.Task.Implementations;
@@ -30,6 +31,7 @@ namespace AvansTS.Core.Models
             TaskState = ToDoState;
 
             AttachToBacklogItem(Item);
+            AttachToNotificationService(new NotificationService());
         }
 
         public void InToDo()
@@ -45,11 +47,6 @@ namespace AvansTS.Core.Models
         public void IsDone()
         {
             TaskState.IsDone();
-        }
-
-        public void InTodo()
-        {
-            throw new NotImplementedException();
         }
     }
 }
