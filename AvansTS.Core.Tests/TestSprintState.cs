@@ -1,5 +1,6 @@
 ﻿using AvansTS.Core.Composite;
 using AvansTS.Core.Models;
+using AvansTS.Core.States.Sprint;
 using AvansTS.Core.States.Sprint.Implementations;
 using System;
 using System.Collections.Generic;
@@ -213,6 +214,101 @@ namespace AvansTS.Core.Tests
 			Assert.Throws<InvalidOperationException>(() =>
 				prj.ProductBacklog.Sprints[0].EndSprint());
 			Assert.IsType<FinishedState>(prj.ProductBacklog.Sprints[0].SprintState);
+		}
+
+		//Test the finished to reveiw
+		[Fact]
+		public void TestFinishedToReview()
+		{
+			var state = prj.ProductBacklog.Sprints[0].SprintState.State;
+			Assert.Equal("Created", state);
+			// Start Sprints
+			prj.ProductBacklog.Sprints[0].StartSprint();
+			prj.ProductBacklog.Sprints[0].EndDate = DateTime.Now;
+			prj.ProductBacklog.Sprints[0].EndSprint();
+				prj.ProductBacklog.Sprints[0].SprintReview();
+			Assert.IsType<ReviewState>(prj.ProductBacklog.Sprints[0].SprintState);
+		}
+
+		//Test the finished to release
+		[Fact]
+		public void TestFinishedToRelease()
+		{
+			var state = prj.ProductBacklog.Sprints[0].SprintState.State;
+			Assert.Equal("Created", state);
+			// Start Sprints
+			prj.ProductBacklog.Sprints[0].StartSprint();
+			prj.ProductBacklog.Sprints[0].EndDate = DateTime.Now;
+			prj.ProductBacklog.Sprints[0].EndSprint();
+			prj.ProductBacklog.Sprints[0].DeploymentRelease();
+			Assert.IsType<ReleasingState>(prj.ProductBacklog.Sprints[0].SprintState);
+		}
+
+		//Test the reveiw to release
+		[Fact]
+		public void TestReveiwToRelease()
+		{
+			var state = prj.ProductBacklog.Sprints[0].SprintState.State;
+			Assert.Equal("Created", state);
+			// Start Sprints
+			prj.ProductBacklog.Sprints[0].StartSprint();
+			prj.ProductBacklog.Sprints[0].EndDate = DateTime.Now;
+			prj.ProductBacklog.Sprints[0].EndSprint();
+			prj.ProductBacklog.Sprints[0].SprintReview();
+			prj.ProductBacklog.Sprints[0].UploadSummary(true);
+			prj.ProductBacklog.Sprints[0].DeploymentRelease();
+			Assert.IsType<ReleasingState>(prj.ProductBacklog.Sprints[0].SprintState);
+		}
+
+		//Test the reveiw to canceled
+		[Fact]
+		public void TestReveiwToCanceled()
+		{
+			var state = prj.ProductBacklog.Sprints[0].SprintState.State;
+			Assert.Equal("Created", state);
+			// Start Sprints
+			prj.ProductBacklog.Sprints[0].StartSprint();
+			prj.ProductBacklog.Sprints[0].EndDate = DateTime.Now;
+			prj.ProductBacklog.Sprints[0].EndSprint();
+			prj.ProductBacklog.Sprints[0].SprintReview();
+			prj.ProductBacklog.Sprints[0].UploadSummary(true);
+			prj.ProductBacklog.Sprints[0].DeploymentCanceled();
+			Assert.IsType<CanceledState>(prj.ProductBacklog.Sprints[0].SprintState);
+		}
+
+		//Test the cancel to closed
+		[Fact]
+		public void TestCanceledToClosed()
+		{
+			var state = prj.ProductBacklog.Sprints[0].SprintState.State;
+			Assert.Equal("Created", state);
+			// Start Sprints
+			prj.ProductBacklog.Sprints[0].StartSprint();
+			prj.ProductBacklog.Sprints[0].EndDate = DateTime.Now;
+			prj.ProductBacklog.Sprints[0].EndSprint();
+			prj.ProductBacklog.Sprints[0].SprintReview();
+			prj.ProductBacklog.Sprints[0].UploadSummary(true);
+			prj.ProductBacklog.Sprints[0].DeploymentCanceled();
+			prj.ProductBacklog.Sprints[0].CloseSprint();
+			Assert.IsType<ClosedState>(prj.ProductBacklog.Sprints[0].SprintState);
+		}
+
+		//Test the released to closed
+		[Fact]
+		public void TestReleasedToClosed()
+		{
+			var state = prj.ProductBacklog.Sprints[0].SprintState.State;
+			Assert.Equal("Created", state);
+			// Start Sprints
+			prj.ProductBacklog.Sprints[0].StartSprint();
+			prj.ProductBacklog.Sprints[0].EndDate = DateTime.Now;
+			prj.ProductBacklog.Sprints[0].EndSprint();
+			prj.ProductBacklog.Sprints[0].SprintReview();
+			prj.ProductBacklog.Sprints[0].UploadSummary(true);
+			prj.ProductBacklog.Sprints[0].DeploymentRelease();
+			prj.ProductBacklog.Sprints[0].StartDevelopmentPipeline();
+			prj.ProductBacklog.Sprints[0].CloseSprint();
+			Assert.IsType<ClosedState>(prj.ProductBacklog.Sprints[0].SprintState);
 		}
 	}
 }
