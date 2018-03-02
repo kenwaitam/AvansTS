@@ -1,5 +1,6 @@
 using AvansTS.Core.Models;
 using AvansTS.Core.States.Task;
+using AvansTS.Core.States.Task.Implementations;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -21,6 +22,7 @@ namespace AvansTS.Core.Tests
 		{
 			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("ToDo", state);
+			Assert.IsType<ToDoState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
 		//Test Todo to Todo state
@@ -33,6 +35,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InToDo());
 			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("ToDo", state);
+			Assert.IsType<ToDoState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
 		//Test Todo to Doing state
@@ -42,6 +45,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress();
 			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Doing", state);
+			Assert.IsType<DoingState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
 		//Test Todo to Done state
@@ -54,6 +58,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone());
 			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("ToDo", state);
+			Assert.IsType<ToDoState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
 		//Test Doing to ToDo state
@@ -67,6 +72,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InToDo());
 			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Doing", state);
+			Assert.IsType<DoingState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
 		//Test Doing to Doing state
@@ -80,6 +86,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress());
 			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Doing", state);
+			Assert.IsType<DoingState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
 		//Test Doing to Done state
@@ -90,6 +97,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.IsDone();
 			var state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Done", state);
+			Assert.IsType<DoneState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
 		//Test Done to ToDo state
@@ -103,6 +111,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InToDo();
 			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("ToDo", state);
+			Assert.IsType<ToDoState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 
 		}
 
@@ -118,6 +127,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress());
 			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Done", state);
+			Assert.IsType<DoneState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 
 		//Test Done to Done state
@@ -132,6 +142,7 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.InProgress());
 			state = prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState.State;
 			Assert.Equal("Done", state);
+			Assert.IsType<DoneState>(prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].WorkItemState);
 		}
 	}
 }

@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
 using Xunit;
+using Moq;
+using AvansTS.Core.Observers;
 
 namespace AvansTS.Core.Tests
 {
-    public class TestObservers : TestDataFixture
+	public class TestObservers : TestDataFixture
     {
 		public TestObservers()
 		{
@@ -15,6 +14,17 @@ namespace AvansTS.Core.Tests
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].InProgress();
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[1].InProgress();
 			prj.ProductBacklog.Sprints[0].Items[0].Tasks[0].IsDone();
+		}
+
+		//Test backlog item observer
+		[Fact]
+		public void TestObserver()
+		{
+			var mock = new Mock<IBacklogItemObserver>();
+			mock.Setup(o => o.Update());
+			//prj.ProductBacklog.Sprints[0].Items[0].AttachToBacklogItem(prj.ProductBacklog.Sprints[0].Items[0]);
+			prj.ProductBacklog.Sprints[0].Items[0].Tasks[1].IsDone();
+			mock.Verify(o => o.Update());
 		}
 
 		//Test backlog item is done
