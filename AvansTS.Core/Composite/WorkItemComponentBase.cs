@@ -1,4 +1,5 @@
-﻿using AvansTS.Core.States;
+﻿using AvansTS.Core.Models;
+using AvansTS.Core.States;
 using AvansTS.Core.States.Task;
 using AvansTS.Core.Subjects;
 using System;
@@ -7,13 +8,18 @@ namespace AvansTS.Core.Composite
 {
 	public abstract class WorkItemComponentBase : WorkItemSubjectBase, IWorkItemState
     {
+		public String Title { get; set; }
+		public User Developer { get; set; }
+		public SprintBacklog Sprint { get; set; }
+
 		public WorkItemStateBase WorkItemState { get; set; }
 		public WorkItemStateBase ToDoState { get; set; }
 		public WorkItemStateBase DoingState { get; set; }
 		public WorkItemStateBase DoneState { get; set; }
 
-		public WorkItemComponentBase()
+		public virtual void AssignDeveloper(User user)
 		{
+			Developer = user;
 		}
 
 		public virtual void Add(WorkItemComponentBase component) {
