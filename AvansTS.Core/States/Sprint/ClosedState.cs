@@ -1,17 +1,16 @@
 ﻿using AvansTS.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AvansTS.Core.States.Sprint
 {
-    public class ClosedState : SprintStateBase
-    {
-        public SprintBacklog Sprint { get; set; }
+	public class ClosedState : SprintStateBase
+	{
+		public SprintBacklog Sprint { get; set; }
 
-        public ClosedState(SprintBacklog sprint)
-        {
-            Sprint = sprint;
-        }
-    }
+		public override string State { get { return "Closed"; } }
+
+		public ClosedState(SprintBacklog sprint)
+		{
+			Sprint = sprint;
+		}
+	}
 }
