@@ -1,4 +1,6 @@
-﻿using AvansTS.Core.Models.Base;
+﻿using AvansTS.Core.Factories;
+using AvansTS.Core.Models.Base;
+using AvansTS.Core.Scrum.Models;
 using AvansTS.Core.Services;
 using AvansTS.Core.States;
 using AvansTS.Core.States.Sprint;
@@ -16,6 +18,7 @@ namespace AvansTS.Core.Models
 		public DateTime EndDate { get; set; }
 		public Boolean IsCurrent { get; set; }
 		public Boolean IsSubmitted { get; set; }
+        public Report Report { get; set; }
         public User Scrummaster { get; set; }
         public List<User> Developers { get; set; }
 
@@ -47,7 +50,20 @@ namespace AvansTS.Core.Models
 			AttachToNotificationService(new NotificationService());
 		}
 
-		public void AssignScrummaster(User user)
+        public void CreateReport(Report report)
+        {
+            Report = report;
+        }
+
+        public void SaveReport(int option = 1)
+        {
+            if (Report != null)
+            {
+                FormatFactory.CreateFormatFactory(option).CreateFormatService().Convert(Report);
+            }
+        }
+
+        public void AssignScrummaster(User user)
 		{
 			Scrummaster = user;
 		}

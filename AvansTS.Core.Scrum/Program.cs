@@ -1,5 +1,8 @@
 ﻿using AvansTS.Core.Components;
 using AvansTS.Core.Models;
+using AvansTS.Core.Scrum.Decorators.Page;
+using AvansTS.Core.Scrum.Models;
+using AvansTS.Core.Scrum.Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -140,8 +143,24 @@ namespace AvansTS.Core
             // Close Sprints
             prj.ProductBacklog.Sprints[0].CloseSprint();
 
+            // Create new Reports
+            prj.ProductBacklog.Sprints[0].CreateReport(new Report { CompanyName = "Avans", ProjectName = "AvansTS", CompanyLogo = "[Avans Hogeschool]"});
+
+            // Create new Reports Templates
+            prj.ProductBacklog.Sprints[0].Report.CreateTemplate(true, true, 2);
+
+            // Write to Reports Pages
+            prj.ProductBacklog.Sprints[0].Report.Pages[0].Prev.LeftText = "Test Report 1";
+            prj.ProductBacklog.Sprints[0].Report.Pages[1].Prev.LeftText = "Test Report 2";
+
+            // Show Previews of Reports
+            prj.ProductBacklog.Sprints[0].Report.Preview();
+
+            // Save Reports
+            prj.ProductBacklog.Sprints[0].SaveReport();
+
             // [DEBUGGING: ZONE]
-            Debug.WriteLine(prj.ProductBacklog.Sprints[0].Developers.Count);
+            //Debug.WriteLine(prj.ProductBacklog.Sprints[0].Developers.Count);
         }
     }
 }
