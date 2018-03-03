@@ -5,18 +5,18 @@ using System.Text;
 
 namespace AvansTS.Core.Scrum.Decorators.Report
 {
-	public class FooterDecorator : ReportDecoratorBase
+	public class FooterDecorator : ReportDecorator
 	{
 		private String footer;
 
-		public FooterDecorator(IReport report, string footerContent) : base(report)
+		public FooterDecorator(ReportBase report, string footerContent) : base(report)
 		{
 			footer = footerContent;
 		}
 
 		public override String Footer
 		{
-			get { return base.Report.Footer + footer; }
+			get { return base.Footer + footer; }
 		}
 	}
 }

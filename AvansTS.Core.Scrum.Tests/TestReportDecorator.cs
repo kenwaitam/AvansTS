@@ -12,17 +12,19 @@ namespace AvansTS.Core.Tests
 		[Fact]
 		public void TestGenerateReport()
 		{
-			var report = new Report();
-			ReportDecoratorBase reportDecorator = new ReportDecorator(report, prj.ProductBacklog.Sprints[0].Name);
-			reportDecorator = new FooterDecorator(reportDecorator, "TestFooter");
-			Assert.Equal("TestFooter", reportDecorator.Footer);
+			ReportBase report = new Report(prj.ProductBacklog.Sprints[0].Name);
+			report = new FooterDecorator(report, "Test");
+			report = new HeaderDecorator(report, "Test2");
+			Assert.Equal("Test", report.Footer);
+			Assert.Equal("Test2", report.Header);
+			Assert.Equal(prj.ProductBacklog.Sprints[0].Name, report.Content);
 		}
 
 		[Fact]
 		public void TestFormatReport()
 		{
-			var report = new Report();
-			ReportDecoratorBase reportDecorator = new ReportDecorator(report, prj.ProductBacklog.Sprints[0].Name);
+			var report = new Report(prj.ProductBacklog.Sprints[0].Name);
+			ReportDecorator reportDecorator = new ReportDecorator(report);
 			PDFFormatFactory PdfFactory = new PDFFormatFactory();
 			var pdfReport = PdfFactory.GeneratePDFFormat().GenerateFormat(report);
 			var pdf = PdfFactory.GeneratePDFFormat();

@@ -5,12 +5,18 @@ using System.Text;
 
 namespace AvansTS.Core.Scrum.Decorators.Report
 {
-	public class Report : IReport
+	public class Report : ReportBase
 	{
-		public string Header { get; set; }
 
-		public string Content { get; set; }
+		public override string Header { get; }
 
-		public string Footer { get; set; }
+		public override string Content { get; }
+
+		public override string Footer { get; }
+
+		public Report(string content)
+		{
+			Content = content;
+		}
 	}
 }

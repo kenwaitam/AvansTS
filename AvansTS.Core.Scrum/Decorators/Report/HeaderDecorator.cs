@@ -5,18 +5,18 @@ using System.Text;
 
 namespace AvansTS.Core.Scrum.Decorators.Report
 {
-	class HeaderDecorator : ReportDecoratorBase
+	public class HeaderDecorator : ReportDecorator
 	{
 		private String header;
 
-		public HeaderDecorator(IReport report, String headerContent) : base(report)
+		public HeaderDecorator(ReportBase report, String headerContent) : base(report)
 		{
 			header = headerContent;
 		}
 
 		public override String Header
 		{
-			get { return base.Report.Header + header; }
+			get { return base.Header + header; }
 		}
 	}
 }
