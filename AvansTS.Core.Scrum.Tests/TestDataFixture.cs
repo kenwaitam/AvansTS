@@ -30,11 +30,14 @@ namespace AvansTS.Core.Tests
 		//Constructor that run before each test
 		public TestDataFixture()
 		{
-			// Choose Notification Options
-			pro1.AddOption(1);
-			pro2.AddOption(1);
-			dev1.AddOption(1);
-			dev2.AddOption(2);
+			// Create New Sprints
+			prj.ProductBacklog.AddSprint(new SprintBacklog(prj)
+			{
+				Name = "Sprint Backlog 1",
+				StartDate = DateTime.Now,
+				EndDate = DateTime.Now.AddDays(5),
+				Items = new List<ProductBacklogItem>()
+			});
 
 			// Add Product Owners to Project
 			prj.AddUser(pro1);

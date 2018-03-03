@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvansTS.Core.Scrum", "Avans
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvansTS.Core.Scrum.Tests", "AvansTS.Core.Scrum.Tests\AvansTS.Core.Scrum.Tests.csproj", "{38EEAC1F-F609-46C8-AB1B-562129D85E83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvansTS.Core.DevOps", "AvansTS.Core.DevOps\AvansTS.Core.DevOps.csproj", "{D0F3AAD4-9BC7-468A-8AD1-7114F7698182}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvansTS.Core.DevOps", "AvansTS.Core.DevOps\AvansTS.Core.DevOps.csproj", "{D0F3AAD4-9BC7-468A-8AD1-7114F7698182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvansTS.Core.DevOps.Tests", "AvansTS.Core.DevOps.Tests\AvansTS.Core.DevOps.Tests.csproj", "{6DF4103A-774E-4B0E-B694-525729F164F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvansTS.Core.DevOps.Tests", "AvansTS.Core.DevOps.Tests\AvansTS.Core.DevOps.Tests.csproj", "{6DF4103A-774E-4B0E-B694-525729F164F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvansTS.Core.SCM", "AvansTS.Core.SCM\AvansTS.Core.SCM.csproj", "{07535C04-0F0F-4EF4-95D9-36F140DC39E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvansTS.Core.SCM", "AvansTS.Core.SCM\AvansTS.Core.SCM.csproj", "{07535C04-0F0F-4EF4-95D9-36F140DC39E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvansTS.Core.SCM.Tests", "AvansTS.Core.SCM.Tests\AvansTS.Core.SCM.Tests.csproj", "{3CFE6FA0-34DC-4988-BCA9-BC14D04C451C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvansTS.Core.SCM.Tests", "AvansTS.Core.SCM.Tests\AvansTS.Core.SCM.Tests.csproj", "{3CFE6FA0-34DC-4988-BCA9-BC14D04C451C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

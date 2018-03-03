@@ -15,6 +15,7 @@ namespace AvansTS.Core.Services.Notification
 			using (StreamWriter w = File.AppendText(@".\Logs\SlackLog.txt"))
 			{
 				FileLog.Log("Slack notification sended to " + user.Name, w);
+				w.Close();
 			}
 
 		}

@@ -15,6 +15,7 @@ namespace AvansTS.Core.Services.Notification
 			using (StreamWriter w = File.AppendText(@".\Logs\EmailLog.txt"))
 			{
 				FileLog.Log("Email notification sended to " + user.Email, w);
+				w.Close();
 			}
 		}
 	}

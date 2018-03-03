@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AvansTS.Core\AvansTS.Core.csproj" />
+    <ProjectReference Include="..\AvansTS.Core.Scrum\AvansTS.Core.Scrum.csproj" />
   </ItemGroup>
 
 </Project>

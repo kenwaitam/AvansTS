@@ -31,10 +31,12 @@ namespace AvansTS.Core.States.Sprint.Implementations
 			Sprint.Items.Add(item);
 			item.Sprint = Sprint;
 
-            foreach (var user in Sprint.Developers)
-            {
-                item.Subscribe(user);
-            }
+			if (Sprint.Developers != null && Sprint.Developers.Count > 0) {
+				foreach (var user in Sprint.Developers)
+				{
+					item.Subscribe(user);
+				}
+			}
 		}
 
 		public override void StartSprint()

@@ -14,6 +14,7 @@ namespace AvansTS.Core.Services
 		public void Log(string logMessage, TextWriter w)
 		{
 			w.WriteLine(logMessage);
+			w.Close();
 		}
 
 		public void DumpLog(StreamReader r)
@@ -23,11 +24,6 @@ namespace AvansTS.Core.Services
 			{
 				Console.WriteLine(line);
 			}
-		}
-
-		public String GetLastMessage(string file)
-		{
-			return File.ReadLines(file).Last();
 		}
 	}
 }

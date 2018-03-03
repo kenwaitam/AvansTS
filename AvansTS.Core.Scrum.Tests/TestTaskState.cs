@@ -1,4 +1,4 @@
-using AvansTS.Core.States.Task.Implementations;
+using AvansTS.Core.States.WorkItem;
 using System;
 using Xunit;
 
@@ -7,12 +7,6 @@ namespace AvansTS.Core.Tests
 	//Testing the Task State Transitions
 	public class TestTaskState : TestDataFixture
 	{
-
-		//Constructor that run before each test
-		public TestTaskState()
-		{
-		}
-
 		//Test the first state
 		[Fact]
 		public void FirstState()
