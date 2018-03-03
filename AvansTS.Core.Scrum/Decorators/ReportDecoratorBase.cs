@@ -18,5 +18,7 @@ namespace AvansTS.Core.Scrum.Decorator
 		public virtual string Content { get; set; }
 
 		public virtual string Footer { get; set; }
+
+
 	}
 }

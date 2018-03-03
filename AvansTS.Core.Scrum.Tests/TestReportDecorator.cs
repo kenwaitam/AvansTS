@@ -13,23 +13,19 @@ namespace AvansTS.Core.Tests
 		public void TestGenerateReport()
 		{
 			var report = new Report();
-			ReportDecoratorBase reportDecorator = new ReportDecorator(report, "Hallo Ritchie", prj.ProductBacklog.Sprints[0].Name, "Doei Ritchie");
-			Assert.Equal("Hallo Ritchie", report.Header);
-			Assert.Equal(prj.ProductBacklog.Sprints[0].Name, report.Content);
-			Assert.Equal("Doei Ritchie", report.Footer);
+			ReportDecoratorBase reportDecorator = new ReportDecorator(report, prj.ProductBacklog.Sprints[0].Name);
+			reportDecorator = new FooterDecorator(reportDecorator, "TestFooter");
+			Assert.Equal("TestFooter", reportDecorator.Footer);
 		}
 
 		[Fact]
 		public void TestFormatReport()
 		{
 			var report = new Report();
-			ReportDecoratorBase reportDecorator = new ReportDecorator(report, "Hallo Ritchie", prj.ProductBacklog.Sprints[0].Name, "Doei Ritchie");
+			ReportDecoratorBase reportDecorator = new ReportDecorator(report, prj.ProductBacklog.Sprints[0].Name);
 			PDFFormatFactory PdfFactory = new PDFFormatFactory();
 			var pdfReport = PdfFactory.GeneratePDFFormat().GenerateFormat(report);
 			var pdf = PdfFactory.GeneratePDFFormat();
-			Assert.Equal("Hallo Ritchie", pdfReport.Header);
-			Assert.Equal(prj.ProductBacklog.Sprints[0].Name, pdfReport.Content);
-			Assert.Equal("Doei Ritchie", pdfReport.Footer);
 			Assert.IsType<PDFFormat>(pdf);
 		}
 	}
