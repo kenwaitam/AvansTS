@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace AvansTS.Core.Models
 {
-    public class ProductBacklogItem : WorkItemComponentBase, IBacklogItemObserver, IWorkItemState
+    public class ProductBacklogItem : WorkItemComponentBase, IBacklogItemObserver
     {
         public DiscussionThread Thread { get; set; }
         public List<WorkItemComponentBase> Tasks { get; set; }
