@@ -11,8 +11,8 @@ namespace AvansTS.Core.DevOps.Command
 	{
 		public void Execute()
 		{
-			IDevOpsService source = new SourceService();
-			source.Run();
+			ICommand build = new SourceCommand();
+			build.Execute();
 		}
 	}
 }

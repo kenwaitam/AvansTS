@@ -1,4 +1,5 @@
 ﻿using AvansTS.Core.Components;
+using AvansTS.Core.DevOps.Factories;
 using AvansTS.Core.Models;
 using AvansTS.Core.SCM.Commands;
 using AvansTS.Core.SCM.Models;
@@ -172,6 +173,9 @@ namespace AvansTS.Core
 
             // SCM: Push to Remote Branches
             dev1.Push(bra1);
+
+			// DevOps: Start Build
+			DevOpsFactory.CreateDevOpsFactory(3).CreateDevOpsService().Run();
 
             // [DEBUGGING: ZONE]
         }

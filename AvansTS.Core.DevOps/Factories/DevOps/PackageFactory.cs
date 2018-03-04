@@ -8,9 +8,9 @@ namespace AvansTS.Core.DevOps.Factories.DevOps
 {
     public class PackageFactory : IDevOpsFactory
     {
-		public ICommand CreateDevOpsCommand()
+		public IDevOpsService CreateDevOpsService()
 		{
-			return new PackageCommand();
+			return new PackageService();
 		}
 	}
 }

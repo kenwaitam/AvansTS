@@ -7,8 +7,8 @@ namespace AvansTS.Core.DevOps.Command
 	{
 		public void Execute()
 		{
-			IDevOpsService deploy = new DeployService();
-			deploy.Run();
+			ICommand build = new DeployCommand();
+			build.Execute();
 		}
 	}
 }

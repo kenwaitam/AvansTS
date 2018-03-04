@@ -1,26 +1,40 @@
-using System;
-using Xunit;
-using Moq;
 using AvansTS.Core.DevOps.Command;
-using AvansTS.Core.DevOps.Factories;
-using System.Collections.Generic;
+using Moq;
+using Xunit;
 
 namespace AvansTS.Core.DevOps.Tests
 {
-    public class TestCommand
-    {
+	public class TestCommand
+	{
 
 		[Fact]
-        public void TestCommandExcecute()
-        {
+		public void TestCommandExcecute()
+		{
 			var mock = new Mock<ICommand>();
 			mock.Setup(d => d.Execute());
-			DevOpsFactory.Factories.Add(7, mock.Object);
 
-			var dev = DevOpsFactory.CreateDevopsFactory(7);
-			dev.Execute();
+			var fake = new FakeService();
+
+			fake.SetCommand(mock.Object);
+			fake.ExecuteCommand();
 
 			mock.Verify(d => d.Execute());
 		}
-    }
+
+
+		public sealed class FakeService
+		{
+			ICommand command;
+			public void SetCommand(ICommand command)
+			{
+				this.command = command;
+			}
+
+			public void ExecuteCommand()
+			{
+				command.Execute();
+			}
+		}
+
+	}
 }

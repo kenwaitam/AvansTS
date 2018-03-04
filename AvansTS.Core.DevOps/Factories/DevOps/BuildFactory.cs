@@ -1,16 +1,13 @@
 ﻿using AvansTS.Core.DevOps.Command;
 using AvansTS.Core.DevOps.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AvansTS.Core.DevOps.Factories.DevOps
 {
 	public class BuildFactory : IDevOpsFactory
 	{
-		public ICommand CreateDevOpsCommand()
+		public IDevOpsService CreateDevOpsService()
 		{
-			return new BuildCommand();
+			return new BuildService();
 		}
 	}
 }

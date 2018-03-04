@@ -8,6 +8,6 @@ namespace AvansTS.Core.DevOps.Factories
 {
     public interface IDevOpsFactory
     {
-		ICommand CreateDevOpsCommand();	
+		IDevOpsService CreateDevOpsService();	
     }
 }

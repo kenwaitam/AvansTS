@@ -7,7 +7,7 @@ namespace AvansTS.Core.DevOps.Factories
 	public class DevOpsFactory
     {
 		public static DevOpsFactory Instance { get; set; }
-		public static Dictionary<int, ICommand> Factories { get; set; }
+		public static Dictionary<int, IDevOpsFactory> Factories { get; set; }
 
 		protected DevOpsFactory() { }
 
@@ -15,18 +15,18 @@ namespace AvansTS.Core.DevOps.Factories
 		{
 			Instance = new DevOpsFactory();
 
-			Factories = new Dictionary<int, ICommand>
+			Factories = new Dictionary<int, IDevOpsFactory>
 			{
-				{ 1, new SourceCommand() },
-				{ 2, new PackageCommand() },
-				{ 3, new BuildCommand() },
-				{ 4, new TestCommand() },
-				{ 5, new DeployCommand() },
-				{ 6, new UtilityCommand() }
+				{ 1, new SourcesFactory() },
+				{ 2, new PackageFactory() },
+				{ 3, new BuildFactory() },
+				{ 4, new TestFactory() },
+				{ 5, new DeployFactory() },
+				{ 6, new UtilityFactory() }
 			};
 		}
 
-		public static ICommand CreateDevopsFactory(int option)
+		public static IDevOpsFactory CreateDevOpsFactory(int option)
 		{
 			return Factories[option];
 		}
