@@ -13,7 +13,7 @@ namespace AvansTS.Core.DevOps.Tests
 		[Fact]
         public void TestCommandExcecute()
         {
-			var mock = new Mock<CommandBase>();
+			var mock = new Mock<ICommand>();
 			mock.Setup(d => d.Execute());
 			DevOpsFactory.Factories.Add(7, mock.Object);
 

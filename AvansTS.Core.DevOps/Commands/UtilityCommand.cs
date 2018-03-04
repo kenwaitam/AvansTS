@@ -7,9 +7,9 @@ using System.Text;
 
 namespace AvansTS.Core.DevOps.Command
 {
-	public class UtilityCommand : CommandBase
+	public class UtilityCommand : ICommand
 	{
-		public override void Execute()
+		public void Execute()
 		{
 			IDevOpsService utility = new UtilityService();
 			utility.Run();

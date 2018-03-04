@@ -7,9 +7,9 @@ using System.Text;
 
 namespace AvansTS.Core.DevOps.Command
 {
-	public class TestCommand : CommandBase
+	public class TestCommand : ICommand
 	{
-		public override void Execute()
+		public void Execute()
 		{
 			IDevOpsService test = new TestService();
 			test.Run();

@@ -4,8 +4,8 @@ using System.Text;
 
 namespace AvansTS.Core.DevOps.Command
 {
-    public abstract class CommandBase
+    public interface ICommand
     {
-		public abstract void Execute();
+		void Execute();
 	}
 }

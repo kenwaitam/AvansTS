@@ -3,9 +3,9 @@ using System.Diagnostics;
 
 namespace AvansTS.Core.DevOps.Command
 {
-	public class DeployCommand : CommandBase
+	public class DeployCommand : ICommand
 	{
-		public override void Execute()
+		public void Execute()
 		{
 			IDevOpsService deploy = new DeployService();
 			deploy.Run();
