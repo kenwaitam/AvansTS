@@ -1,5 +1,7 @@
 ﻿using AvansTS.Core.Components;
 using AvansTS.Core.Models;
+using AvansTS.Core.SCM.Commands;
+using AvansTS.Core.SCM.Models;
 using AvansTS.Core.Scrum.Decorators.Page;
 using AvansTS.Core.Scrum.Models;
 using AvansTS.Core.Scrum.Models.Base;
@@ -93,7 +95,7 @@ namespace AvansTS.Core
             prj.ProductBacklog.Sprints[0].Items[0].AddTask(new Task(prj.ProductBacklog.Sprints[0].Items[0]) { Title = "Task Item 2" });
 
             // Assign Developers or Scrummasters
-            // to Sprint Backlogs
+            // to Sprints
             prj.ProductBacklog.Sprints[0].AssignScrummaster(dev1);
             // to Backlog Items
             prj.ProductBacklog.Sprints[0].Items[0].AssignDeveloper(dev1);
@@ -144,7 +146,7 @@ namespace AvansTS.Core
             prj.ProductBacklog.Sprints[0].CloseSprint();
 
             // Create new Reports
-            prj.ProductBacklog.Sprints[0].CreateReport(new Report { CompanyName = "Avans", ProjectName = "AvansTS", CompanyLogo = "[Avans Hogeschool]"});
+            prj.ProductBacklog.Sprints[0].CreateReport(new Report { CompanyName = "Avans", ProjectName = "AvansTS", CompanyLogo = "[Avans Hogeschool]" });
 
             // Create new Reports Templates
             prj.ProductBacklog.Sprints[0].Report.CreateTemplate(true, true, 2);
@@ -159,8 +161,19 @@ namespace AvansTS.Core
             // Save Reports
             prj.ProductBacklog.Sprints[0].SaveReport();
 
+            // SCM: Choose Version Control Options to Projects
+            prj.ChooseVersionControl();
+
+            // SCM: Create new Branches
+            Branch bra1 = new Branch { Name = "develop", Provider = prj.Provider, Commits = new List<Commit>() };
+
+            // SCM: Commit to Local Branches
+            dev1.Commit(new Commit { Branch = bra1, Message = "Added SCM" });
+
+            // SCM: Push to Remote Branches
+            dev1.Push(bra1);
+
             // [DEBUGGING: ZONE]
-            //Debug.WriteLine(prj.ProductBacklog.Sprints[0].Developers.Count);
         }
     }
 }

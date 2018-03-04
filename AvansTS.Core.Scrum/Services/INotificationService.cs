@@ -2,8 +2,8 @@
 
 namespace AvansTS.Core.Services
 {
-	public interface INotificationService
-	{
-		void Send(User user);
-	}
+    public interface INotificationService
+    {
+        void Send(User user);
+    }
 }

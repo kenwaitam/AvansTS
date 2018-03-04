@@ -5,27 +5,27 @@ using System.Collections.Generic;
 
 namespace AvansTS.Core.Factories
 {
-	public class FormatFactory
-	{
-		public static FormatFactory Instance { get; set; }
-		public static Dictionary<int, IFormatFactory> Factories { get; set; }
+    public class FormatFactory
+    {
+        public static FormatFactory Instance { get; set; }
+        public static Dictionary<int, IFormatFactory> Factories { get; set; }
 
-		protected FormatFactory() { }
+        protected FormatFactory() { }
 
-		static FormatFactory()
-		{
-			Instance = new FormatFactory();
+        static FormatFactory()
+        {
+            Instance = new FormatFactory();
 
-			Factories = new Dictionary<int, IFormatFactory>
-			{
-				{ 1, new PDFFactory() },
-				{ 2, new DOCFactory() }
-			};
-		}
+            Factories = new Dictionary<int, IFormatFactory>
+            {
+                { 1, new PDFFactory() },
+                { 2, new DOCFactory() }
+            };
+        }
 
-		public static IFormatFactory CreateFormatFactory(int option)
-		{
-			return Factories[option];
-		}
-	}
+        public static IFormatFactory CreateFormatFactory(int option)
+        {
+            return Factories[option];
+        }
+    }
 }
