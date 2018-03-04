@@ -3,11 +3,11 @@ using System.Diagnostics;
 
 namespace AvansTS.Core.DevOps.Command
 {
-	public class DeployCommand : ICommand
+	public class DeployCommand : IDevOpsCommand
 	{
 		public void Execute()
 		{
-			ICommand build = new DeployCommand();
+			IDevOpsCommand build = new DeployCommand();
 			build.Execute();
 		}
 	}

@@ -10,7 +10,7 @@ namespace AvansTS.Core.DevOps.Tests
 		[Fact]
 		public void TestCommandExcecute()
 		{
-			var mock = new Mock<ICommand>();
+			var mock = new Mock<IDevOpsCommand>();
 			mock.Setup(d => d.Execute());
 
 			var fake = new FakeService();
@@ -24,8 +24,8 @@ namespace AvansTS.Core.DevOps.Tests
 
 		public sealed class FakeService
 		{
-			ICommand command;
-			public void SetCommand(ICommand command)
+			IDevOpsCommand command;
+			public void SetCommand(IDevOpsCommand command)
 			{
 				this.command = command;
 			}

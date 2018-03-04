@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AvansTS.Core.DevOps.Command
 {
-	public class BuildCommand : ICommand
+	public class BuildCommand : IDevOpsCommand
 	{
 		public void Execute()
 		{

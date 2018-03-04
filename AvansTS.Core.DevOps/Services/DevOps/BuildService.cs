@@ -10,7 +10,7 @@ namespace AvansTS.Core.DevOps.Services
 	{
 		public void Run()
 		{
-			ICommand build = new BuildCommand();
+			IDevOpsCommand build = new BuildCommand();
 			build.Execute();
 		}
     }

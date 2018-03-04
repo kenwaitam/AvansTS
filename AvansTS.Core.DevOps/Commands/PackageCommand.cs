@@ -7,11 +7,11 @@ using System.Text;
 
 namespace AvansTS.Core.DevOps.Command
 {
-	public class PackageCommand : ICommand
+	public class PackageCommand : IDevOpsCommand
 	{
 		public void Execute()
 		{
-			ICommand build = new PackageCommand();
+			IDevOpsCommand build = new PackageCommand();
 			build.Execute();
 		}
 	}
