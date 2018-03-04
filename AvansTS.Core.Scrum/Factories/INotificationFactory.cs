@@ -2,8 +2,8 @@
 
 namespace AvansTS.Core.Factories
 {
-	public interface INotificationFactory
-	{
-		INotificationService CreateNotificationService();
-	}
+    public interface INotificationFactory
+    {
+        INotificationService CreateNotificationService();
+    }
 }

@@ -9,4 +9,8 @@
     <Folder Include="Logs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AvansTS.Core.SCM\AvansTS.Core.SCM.csproj" />
+  </ItemGroup>
+
 </Project>
