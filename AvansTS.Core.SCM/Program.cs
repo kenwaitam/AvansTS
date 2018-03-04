@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace AvansTS.Core.SCM
 {
@@ -6,7 +7,6 @@ namespace AvansTS.Core.SCM
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }

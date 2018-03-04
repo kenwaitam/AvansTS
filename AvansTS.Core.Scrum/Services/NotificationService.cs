@@ -4,14 +4,14 @@ using AvansTS.Core.Observers;
 
 namespace AvansTS.Core.Services
 {
-	public class NotificationService : INotificationObserver
-	{
-		public void Send(User user)
-		{
-			foreach (var option in user.NotificationOptions)
-			{
-				NotificationFactory.CreateNotificationFactory(option).CreateNotificationService().Send(user);
-			}
-		}
-	}
+    public class NotificationService : INotificationObserver
+    {
+        public void Send(User user)
+        {
+            foreach (var option in user.NotificationOptions)
+            {
+                NotificationFactory.CreateNotificationFactory(option).CreateNotificationService().Send(user);
+            }
+        }
+    }
 }
