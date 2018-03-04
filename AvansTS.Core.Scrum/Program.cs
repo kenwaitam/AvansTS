@@ -174,9 +174,6 @@ namespace AvansTS.Core
             // SCM: Push to Remote Branches
             dev1.Push(bra1);
 
-			// DevOps: Start Build
-			DevOpsFactory.CreateDevOpsFactory(3).CreateDevOpsService().Run();
-
             // [DEBUGGING: ZONE]
         }
     }
