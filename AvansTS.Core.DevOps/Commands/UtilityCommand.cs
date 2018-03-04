@@ -1,4 +1,5 @@
 ﻿using AvansTS.Core.DevOps.Command;
+using AvansTS.Core.DevOps.Factories;
 using AvansTS.Core.DevOps.Services;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,7 @@ namespace AvansTS.Core.DevOps.Command
 	{
 		public void Execute()
 		{
-			IDevOpsCommand build = new UtilityCommand();
-			build.Execute();
+			DevOpsFactory.CreateDevOpsFactory(6).CreateDevOpsService().Run();
 		}
 	}
 }

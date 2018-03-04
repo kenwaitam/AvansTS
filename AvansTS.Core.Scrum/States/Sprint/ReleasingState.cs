@@ -16,10 +16,20 @@ namespace AvansTS.Core.States.Sprint
 
         public override void StartDevelopmentPipeline()
         {
-            Sprint.SprintState = Sprint.ReleasedState;
-
-			// DevOps: Start Build
+			// DevOps: Start Source
+			DevOpsFactory.CreateDevOpsFactory(1).CreateDevOpsService().Run();
+			// DevOps: Start Packaging
+			DevOpsFactory.CreateDevOpsFactory(2).CreateDevOpsService().Run();
+			// DevOps: Start Building
 			DevOpsFactory.CreateDevOpsFactory(3).CreateDevOpsService().Run();
+			// DevOps: Start Testing
+			DevOpsFactory.CreateDevOpsFactory(4).CreateDevOpsService().Run();
+			// DevOps: Start Deploying
+			DevOpsFactory.CreateDevOpsFactory(5).CreateDevOpsService().Run();
+			// DevOps: Do Utility
+			DevOpsFactory.CreateDevOpsFactory(6).CreateDevOpsService().Run();
+
+			Sprint.SprintState = Sprint.ReleasedState;
 		}
     }
 }

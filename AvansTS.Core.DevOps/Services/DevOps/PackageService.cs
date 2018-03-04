@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AvansTS.Core.DevOps.Factories;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -9,7 +10,7 @@ namespace AvansTS.Core.DevOps.Services
     {
 		public void Run()
 		{
-			Debug.WriteLine("Package");
+			Debug.WriteLine("Packaged");
 		}
 	}
 }
