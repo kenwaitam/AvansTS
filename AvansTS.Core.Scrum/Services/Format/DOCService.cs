@@ -8,9 +8,12 @@ namespace AvansTS.Core.Scrum.Services.Format
 {
     public class DOCService : IFormatService
     {
-        public void Convert(Report report)
+		public Report Report { get; set; }
+		public String Convert(Report report)
         {
-            Debug.WriteLine("DOC Service not implemented.");
-        }
+			Report = report;
+			Debug.WriteLine("DOC Service not implemented.");
+			return "This is a pdf";
+		}
     }
 }
