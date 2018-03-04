@@ -1,4 +1,5 @@
-﻿using AvansTS.Core.Models;
+﻿using AvansTS.Core.DevOps.Factories;
+using AvansTS.Core.Models;
 
 namespace AvansTS.Core.States.Sprint
 {
@@ -16,6 +17,9 @@ namespace AvansTS.Core.States.Sprint
         public override void StartDevelopmentPipeline()
         {
             Sprint.SprintState = Sprint.ReleasedState;
-        }
+
+			// DevOps: Start Build
+			DevOpsFactory.CreateDevOpsFactory(3).CreateDevOpsService().Run();
+		}
     }
 }

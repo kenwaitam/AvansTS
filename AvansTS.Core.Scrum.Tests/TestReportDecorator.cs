@@ -84,7 +84,7 @@ namespace AvansTS.Core.Tests
 			report.CreateTemplate(true, true, 1);
 			var pdfService = FormatFactory.CreateFormatFactory(1).CreateFormatService();
 			var pdf = pdfService.Convert(report);
-			Assert.IsType<PDFService>(pdf);
+			Assert.IsType<PDFService>(pdfService);
 			Assert.Equal("This is a pdf", pdf);
 		}
 	}
