@@ -6,11 +6,15 @@ using AvansTS.Core.Scrum.Models;
 
 namespace AvansTS.Core.Scrum.Services.Format
 {
-    public class PDFService : IFormatService
-    {
-        public void Convert(Report report)
+	public class PDFService : IFormatService
+	{
+		public Report Report { get; set; }
+
+        public String Convert(Report report)
         {
+			Report = report;
             Debug.WriteLine("PDF Service not implemented.");
+			return "This is a pdf";
         }
     }
 }

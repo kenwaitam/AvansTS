@@ -7,6 +7,6 @@ namespace AvansTS.Core.Scrum.Services
 {
     public interface IFormatService
     {
-        void Convert(Report report);
+        String Convert(Report report);
     }
 }
