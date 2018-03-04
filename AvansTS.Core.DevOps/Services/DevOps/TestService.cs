@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AvansTS.Core.DevOps.Factories;
 using System.Diagnostics;
-using System.Text;
 
 namespace AvansTS.Core.DevOps.Services
 {
-    public class TestService : IDevOpsService
+	public class TestService : IDevOpsService
 	{
 		public void Run()
 		{
-			Debug.WriteLine("Test");
+			Debug.WriteLine("Tested");
 		}
 	}
 }

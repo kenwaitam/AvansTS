@@ -1,4 +1,4 @@
-﻿using AvansTS.Core.DevOps.Services;
+﻿using AvansTS.Core.DevOps.Factories;
 using System.Diagnostics;
 
 namespace AvansTS.Core.DevOps.Command
@@ -7,8 +7,7 @@ namespace AvansTS.Core.DevOps.Command
 	{
 		public void Execute()
 		{
-			IDevOpsCommand build = new DeployCommand();
-			build.Execute();
+			DevOpsFactory.CreateDevOpsFactory(5).CreateDevOpsService().Run();
 		}
 	}
 }
