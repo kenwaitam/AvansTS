@@ -1,4 +1,5 @@
-﻿using AvansTS.Core.DevOps.Factories;
+﻿using AvansTS.Core.DevOps.Command;
+using AvansTS.Core.DevOps.Factories;
 using AvansTS.Core.Models;
 
 namespace AvansTS.Core.States.Sprint
@@ -21,7 +22,7 @@ namespace AvansTS.Core.States.Sprint
             do
             {
                 // DevOps: Start Sources, Packaging, Building, Testing, Deploying, Utilities
-                pipeline = DevOpsFactory.CreateDevOpsFactory(x).CreateDevOpsService().Run();
+                pipeline = DevOpsCommandFactory.CreateDevOpsCommandFactory(x).CreateDevOpsCommand().Execute();
 
                 if (pipeline == false)
                 {

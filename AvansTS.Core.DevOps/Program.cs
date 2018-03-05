@@ -6,7 +6,6 @@ namespace AvansTS.Core.DevOps
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }
