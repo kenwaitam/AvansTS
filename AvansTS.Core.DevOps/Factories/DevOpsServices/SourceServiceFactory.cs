@@ -6,11 +6,11 @@ using System.Text;
 
 namespace AvansTS.Core.DevOps.Factories.DevOps
 {
-    public class TestFactory : IDevOpsFactory
+    public class SourceServiceFactory : IDevOpsServiceFactory
     {
-		public IDevOpsService CreateDevOpsService()
-		{
-			return new TestService();
-		}
-	}
+        public IDevOpsService CreateDevOpsService()
+        {
+            return new SourceService();
+        }
+    }
 }

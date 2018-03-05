@@ -8,11 +8,11 @@ using System.Text;
 
 namespace AvansTS.Core.DevOps.Command
 {
-	public class PackageCommand : IDevOpsCommand
-	{
-		public void Execute()
-		{
-			DevOpsFactory.CreateDevOpsFactory(2).CreateDevOpsService().Run();
-		}
-	}
+    public class PackageCommand : IDevOpsCommand
+    {
+        public Boolean Execute()
+        {
+            return DevOpsServiceFactory.CreateDevOpsServiceFactory(2).CreateDevOpsService().Run();
+        }
+    }
 }
