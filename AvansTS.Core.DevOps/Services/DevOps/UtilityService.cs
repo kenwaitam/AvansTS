@@ -8,9 +8,12 @@ namespace AvansTS.Core.DevOps.Services
 {
     public class UtilityService : IDevOpsService
     {
-		public void Run()
-		{
-			Debug.WriteLine("Do Utility");
-		}
-	}
+        public Boolean Run()
+        {
+            Debug.WriteLine("Start Utilities...");
+            Debug.WriteLine("Utility Successful");
+
+            return true;
+        }
+    }
 }

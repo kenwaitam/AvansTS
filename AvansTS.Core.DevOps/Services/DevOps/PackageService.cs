@@ -6,11 +6,14 @@ using System.Text;
 
 namespace AvansTS.Core.DevOps.Services
 {
-    class PackageService : IDevOpsService
+    public class PackageService : IDevOpsService
     {
-		public void Run()
-		{
-			Debug.WriteLine("Packaged");
-		}
-	}
+        public Boolean Run()
+        {
+            Debug.WriteLine("Start Packaging...");
+            Debug.WriteLine("Package Successful");
+
+            return true;
+        }
+    }
 }

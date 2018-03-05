@@ -118,9 +118,9 @@ namespace AvansTS.Core.Models
             SprintState.DeploymentCanceled();
         }
 
-        public virtual void StartDevelopmentPipeline()
+        public virtual void StartDevelopmentPipeline(int x)
         {
-            SprintState.StartDevelopmentPipeline();
+            SprintState.StartDevelopmentPipeline(x);
         }
 
         public virtual void CloseSprint()

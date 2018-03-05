@@ -52,7 +52,7 @@ namespace AvansTS.Core.States
             throw new InvalidOperationException();
         }
 
-        public virtual void StartDevelopmentPipeline()
+        public virtual void StartDevelopmentPipeline(int x)
         {
             throw new InvalidOperationException();
         }

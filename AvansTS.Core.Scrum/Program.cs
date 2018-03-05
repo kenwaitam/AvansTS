@@ -141,7 +141,7 @@ namespace AvansTS.Core
             // to Deployments
             prj.ProductBacklog.Sprints[0].DeploymentRelease();
             // to DevOps Pipelines
-            prj.ProductBacklog.Sprints[0].StartDevelopmentPipeline();
+            prj.ProductBacklog.Sprints[0].StartDevelopmentPipeline(1);
 
             // Close Sprints
             prj.ProductBacklog.Sprints[0].CloseSprint();

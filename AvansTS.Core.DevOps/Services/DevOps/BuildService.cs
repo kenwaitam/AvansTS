@@ -7,10 +7,13 @@ using System.Text;
 namespace AvansTS.Core.DevOps.Services
 {
     public class BuildService : IDevOpsService
-	{
-		public void Run()
-		{
-			Debug.WriteLine("Builded");
-		}
+    {
+        public Boolean Run()
+        {
+            Debug.WriteLine("Start Building...");
+            Debug.WriteLine("Build Successful");
+
+            return true;
+        }
     }
 }

@@ -6,6 +6,7 @@ namespace AvansTS.Core.DevOps.Services
 {
     public interface IDevOpsService
     {
-		void Run();
+        Boolean Run();
+
     }
 }
