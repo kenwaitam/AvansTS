@@ -14,7 +14,7 @@ namespace AvansTS.Core.States
         void UploadSummary(Boolean summary);
         void DeploymentRelease();
         void DeploymentCanceled();
-        void StartDevelopmentPipeline();
+        void StartDevelopmentPipeline(int x);
         void CloseSprint();
     }
 }

@@ -14,22 +14,45 @@ namespace AvansTS.Core.States.Sprint
             Sprint = sprint;
         }
 
-        public override void StartDevelopmentPipeline()
+        public override void StartDevelopmentPipeline(int x)
         {
-			// DevOps: Start Source
-			DevOpsFactory.CreateDevOpsFactory(1).CreateDevOpsService().Run();
-			// DevOps: Start Packaging
-			DevOpsFactory.CreateDevOpsFactory(2).CreateDevOpsService().Run();
-			// DevOps: Start Building
-			DevOpsFactory.CreateDevOpsFactory(3).CreateDevOpsService().Run();
-			// DevOps: Start Testing
-			DevOpsFactory.CreateDevOpsFactory(4).CreateDevOpsService().Run();
-			// DevOps: Start Deploying
-			DevOpsFactory.CreateDevOpsFactory(5).CreateDevOpsService().Run();
-			// DevOps: Do Utility
-			DevOpsFactory.CreateDevOpsFactory(6).CreateDevOpsService().Run();
+            var pipeline = false;
 
-			Sprint.SprintState = Sprint.ReleasedState;
-		}
+            do
+            {
+                // DevOps: Start Sources, Packaging, Building, Testing, Deploying, Utilities
+                pipeline = DevOpsFactory.CreateDevOpsFactory(x).CreateDevOpsService().Run();
+
+                if (pipeline == false)
+                {
+                    Sprint.NotifyUser(Sprint.Scrummaster);
+                    break;
+                }
+
+                x++;
+            } while (x <= 6);
+
+            if (pipeline == true)
+            {
+                Sprint.SprintState = Sprint.ReleasedState;
+                Sprint.NotifyUser(Sprint.Scrummaster);
+
+                foreach (var user in Sprint.Project.ProductOwners)
+                {
+                    Sprint.NotifyUser(user);
+                }
+            }
+        }
+
+        public override void DeploymentCanceled()
+        {
+            Sprint.SprintState = Sprint.CanceledState;
+            Sprint.NotifyUser(Sprint.Scrummaster);
+
+            foreach (var user in Sprint.Project.ProductOwners)
+            {
+                Sprint.NotifyUser(user);
+            }
+        }
     }
 }
